@@ -76,7 +76,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           <a href="#top" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
             <img 
-              src="/petra_transparet.png" 
+              src="petra_transparet.png" 
               alt="Petra Fimberger" 
               className="h-12 w-auto md:h-14 lg:h-16"
             />

@@ -14,9 +14,9 @@ const artworks = [
     emotionalDescription: "Eine Studie in Gegensätzen. Kräftiges, fast aggressives Rot trifft auf verletzliche Silhouetten. Die spielerischen Punkte stehen im Kontrast zur ernsten Szene. Dieses Bild ist kein stiller Wandschmuck – es ist ein Gesprächsstarter über die Masken, die wir tragen, und die Emotionen, die darunter brodeln.",
     price: "€ 1.450",
     images: [
-        "/art/bitte-laecheln-total.jpg",
-        "/art/bitte-laecheln-detail.jpg",
-        "/art/bitte-laecheln-raum.jpg"
+        "art/bitte-laecheln-total.jpg",
+        "art/bitte-laecheln-detail.jpg",
+        "art/bitte-laecheln-raum.jpg"
     ]
   },
     {
@@ -30,9 +30,9 @@ const artworks = [
     emotionalDescription: "Für Momente, in denen sich Perfektion unpersönlich anfühlt. Dieses Werk ist der Herzschlag für Ihre Wände. Es ist komplex, ein wenig chaotisch, aber gleichzeitig elegant – genau wie das Leben selbst. Entdecken Sie jeden Tag eine neue Linie, eine neue Schicht, eine neue Geschichte.",
     price: "€ 1.800",
     images: [
-        "/art/fabelhafte-komplexitaet-total.jpg",
-        "/art/fabelhafte-komplexitaet-detail.jpg",
-        "/art/fabelhafte-komplexitaet-raum.jpg"
+        "art/fabelhafte-komplexitaet-total.jpg",
+        "art/fabelhafte-komplexitaet-detail.jpg",
+        "art/fabelhafte-komplexitaet-raum.jpg"
     ]
   },
       {
@@ -46,9 +46,9 @@ const artworks = [
     emotionalDescription: "Für Momente, in denen sich Perfektion unpersönlich anfühlt. Dieses Werk ist der Herzschlag für Ihre Wände. Es ist komplex, ein wenig chaotisch, aber gleichzeitig elegant – genau wie das Leben selbst. Entdecken Sie jeden Tag eine neue Linie, eine neue Schicht, eine neue Geschichte.",
     price: "€ 1.800",
     images: [
-        "/art/der-kuh-total.jpg",
-        "/art/der-kuh-detail.jpg",
-        "/art/der-kuh-raum.jpg"
+        "art/der-kuh-total.jpg",
+        "art/der-kuh-detail.jpg",
+        "art/der-kuh-raum.jpg"
     ]
   },
 ];

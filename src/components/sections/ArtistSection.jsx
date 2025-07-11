@@ -13,7 +13,7 @@ const ArtistSection = () => {
             viewport={{ once: true }}
           >
             <div className="relative">
-              <img  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier" className="w-full max-h-[75vh] h-auto object-contain rounded-2xl" src="/petra-fimberger-atelier.jpg" />
+              <img  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier" className="w-full max-h-[75vh] h-auto object-contain rounded-2xl" src="petra-fimberger-atelier.jpg" />
             </div>
           </motion.div>
           
