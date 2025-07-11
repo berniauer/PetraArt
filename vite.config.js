@@ -190,7 +190,7 @@ logger.error = (msg, options) => {
 }
 
 export default defineConfig({
-	base: '/PetraArt/',
+	base: process.env.NODE_ENV === 'production' ? '/PetraArt/' : '/',
 	customLogger: logger,
 	plugins: [
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin()] : []),
