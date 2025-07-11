@@ -16,7 +16,7 @@ function App() {
         <html lang="de" />
         <title>PetraArt</title>
         <meta name="description" content="Entdecken Sie einzigartige, abstrakte Kunstwerke, die Ihrem Zuhause eine Seele geben. Jedes Bild ist ein handgemaltes Original voller Energie und Persönlichkeit." />
-        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="favicon.png" />
       </Helmet> 
       
       <div className="min-h-screen bg-white font-stolzl">
