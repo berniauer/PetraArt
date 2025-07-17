@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const ArtistSection = () => {
   return (
@@ -33,6 +35,14 @@ const ArtistSection = () => {
             <div className="mt-8">
               <img  alt="Eingescannte Unterschrift der Künstlerin Petra Fimberger" className="h-16 w-auto opacity-70" src="https://images.unsplash.com/photo-1636407161775-085bf8adf747" />
             </div>
+
+            <div className="mt-8">
+              <Link to="/references">
+                <Button className="px-6 py-3">
+                  Meinen Werdegang ansehen
+                </Button>
+              </Link>
+          </div>
           </motion.div>
         </div>
       </div>

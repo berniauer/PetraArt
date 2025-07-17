@@ -1,68 +1,81 @@
+// src/components/layout/Header.jsx
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Links: drei Anchors und eine Route
   const navLinks = [
-    { name: 'Galerie', href: '#gallery' },
-    { name: 'Über mich', href: '#about' },
-    { name: 'Kontakt', href: '#contact' },
+    { name: 'galerie', href: '#gallery' },
+    { name: 'über mich', href: '#about' },
+    { name: 'kontakt', href: '#contact' },
+    { name: 'referenzen', href: '/references' },
   ];
 
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50);
-
-    const sections = navLinks.map(link => document.querySelector(link.href));
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i];
-      if (section && section.offsetTop <= scrollPosition) {
-        setActiveSection(section.id);
-        return;
-      }
-    }
-    setActiveSection('');
-  };
-
+  // Header-Hintergrund bei Scroll
   useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Bestimme aktive Section (nur auf Home)
+      if (location.pathname === '/') {
+        const scrollPos = window.scrollY + window.innerHeight / 2;
+        for (let link of navLinks) {
+          if (link.href.startsWith('#')) {
+            const sec = document.querySelector(link.href);
+            if (sec && sec.offsetTop <= scrollPos) {
+              setActiveSection(link.href.substring(1));
+              return;
+            }
+          }
+        }
+      }
+      setActiveSection('');
+    };
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
-  const scrollToSection = (e, href) => {
+  const headerVariants = {
+    top:    { backgroundColor: 'rgba(255,255,255,0)', backdropFilter: 'blur(0)', boxShadow: 'none' },
+    scrolled: {
+      backgroundColor: 'rgba(255,255,255,0.8)',
+      backdropFilter: 'blur(10px)',
+      boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1)',
+    },
+  };
+  const mobileMenuVariants = { closed: { opacity: 0, y: '-20%' }, open: { opacity: 1, y: '0%' } };
+
+  const onNavClick = (e, href) => {
     e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+
+    if (href.startsWith('#')) {
+      // Smooth-Scroll auf Home
+      if (location.pathname !== '/') navigate('/');
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Route wechseln
+      navigate(href);
+    }
   };
 
   const scrollToTop = (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsMenuOpen(false);
-  };
-
-  const headerVariants = {
-    scrolled: {
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      backdropFilter: 'blur(10px)',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-    },
-    top: {
-      backgroundColor: 'rgba(255, 255, 255, 0)',
-      backdropFilter: 'blur(0px)',
-      boxShadow: '0 0 0 0 rgba(0,0,0,0)',
-    },
-  };
-  
-  const mobileMenuVariants = {
-    closed: { opacity: 0, y: "-20%" },
-    open: { opacity: 1, y: "0%" }
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -74,29 +87,42 @@ const Header = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-20">
-          <a href="#top" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
-            <img 
-              src="petra_transparet.png" 
-              alt="Petra Fimberger" 
+          {/* Logo / Home */}
+          <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
+            <img
+              src="/petra_transparet.png"
+              alt="Petra Fimberger"
               className="h-12 w-auto md:h-14 lg:h-16"
             />
           </a>
 
+          {/* Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className={`relative text-gray-600 hover:text-gold transition-colors after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-gold after:transition-transform after:duration-300 ${
-                  activeSection === link.href.substring(1) ? 'after:scale-x-100 text-gold' : 'after:scale-x-0'
-                } hover:after:scale-x-100`}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map(({ name, href }) => {
+              const isAnchor = href.startsWith('#');
+              const isActiveRoute = !isAnchor && location.pathname === href;
+              const isActiveSection = isAnchor && activeSection === href.substring(1);
+              return (
+                <a
+                  key={name}
+                  href={href}
+                  onClick={(e) => onNavClick(e, href)}
+                  className={`
+                    relative stolzl-light uppercase tracking-wide transition-colors
+                    ${isActiveRoute || isActiveSection
+                      ? 'text-gold after:scale-x-100'
+                      : 'text-gray-600 after:scale-x-0 hover:text-gold'}
+                    after:content-[''] after:absolute after:left-0 after:bottom-[-4px]
+                    after:w-full after:h-[2px] after:bg-gold after:transition-transform after:duration-300
+                  `}
+                >
+                  {name}
+                </a>
+              );
+            })}
           </nav>
 
+          {/* Mobile Toggle */}
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-800">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -104,9 +130,11 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden bg-white/95 backdrop-blur-md shadow-lg"
             variants={mobileMenuVariants}
             initial="closed"
@@ -115,14 +143,14 @@ const Header = () => {
             transition={{ duration: 0.3 }}
           >
             <nav className="flex flex-col items-center space-y-6 py-8">
-              {navLinks.map((link) => (
+              {navLinks.map(({ name, href }) => (
                 <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-lg text-gray-700 hover:text-gold transition-colors"
+                  key={name}
+                  href={href}
+                  onClick={(e) => onNavClick(e, href)}
+                  className="text-lg stolzl-light uppercase tracking-wide hover:text-gold transition-colors"
                 >
-                  {link.name}
+                  {name}
                 </a>
               ))}
             </nav>

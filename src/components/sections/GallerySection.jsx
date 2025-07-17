@@ -36,7 +36,7 @@ const artworks = [
     ]
   },
       {
-    id: 2,
+    id: 3,
     title: "Der Kuh",
     details: {
         dimensions: "120cm x 100cm",
