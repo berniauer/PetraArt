@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const ArtistSection = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="pt-32 pb-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -14,8 +14,8 @@ const ArtistSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative">
-              <img  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier" className="w-full max-h-[75vh] h-auto object-contain rounded-2xl" src="petra-fimberger-atelier.jpg" />
+            <div className="relative overflow-hidden rounded-2xl art-shadow">
+              <img  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier" className="w-full max-h-[75vh] h-auto object-contain" src="petra-fimberger-atelier.jpg" />
             </div>
           </motion.div>
           
@@ -38,7 +38,7 @@ const ArtistSection = () => {
 
             <div className="mt-8">
               <Link to="/references">
-                <Button className="px-6 py-3">
+                <Button className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                   Meinen Werdegang ansehen
                 </Button>
               </Link>

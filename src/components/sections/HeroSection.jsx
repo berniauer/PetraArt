@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
-    <section id="top" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+    <section id="top" className="relative min-h-screen pt-20 flex items-center justify-center hero-gradient overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-32 h-32 bg-gold rounded-full blur-3xl"></div>
         <div className="absolute bottom-40 right-32 w-48 h-48 bg-gold rounded-full blur-3xl opacity-50"></div>

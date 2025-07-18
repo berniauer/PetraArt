@@ -27,17 +27,22 @@ const Header = () => {
       // Bestimme aktive Section (nur auf Home)
       if (location.pathname === '/') {
         const scrollPos = window.scrollY + window.innerHeight / 2;
+        let foundActiveSection = '';
+        
+        // Durchlaufe alle Anchor-Links und finde die aktive Section
         for (let link of navLinks) {
           if (link.href.startsWith('#')) {
-            const sec = document.querySelector(link.href);
-            if (sec && sec.offsetTop <= scrollPos) {
-              setActiveSection(link.href.substring(1));
-              return;
+            const sectionId = link.href.substring(1);
+            const section = document.querySelector(`#${sectionId}`);
+            if (section && section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+              foundActiveSection = sectionId;
             }
           }
         }
+        setActiveSection(foundActiveSection);
+      } else {
+        setActiveSection('');
       }
-      setActiveSection('');
     };
 
     window.addEventListener('scroll', handleScroll);

@@ -72,7 +72,7 @@ const GallerySection = () => {
 
   return (
     <>
-      <section id="gallery" className="py-20 bg-white">
+      <section id="gallery" className="pt-32 pb-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -1,7 +1,7 @@
 // App.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/Header';
@@ -14,6 +14,17 @@ import ArtistSection from '@/components/sections/ArtistSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 import ReferencesPage from '@/pages/references'; // Deine Timeline-Seite
+
+// Komponente um automatisch nach oben zu scrollen bei Routenwechsel
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
@@ -29,6 +40,7 @@ function App() {
       </Helmet>
 
       <div className="min-h-screen bg-white font-stolzl">
+        <ScrollToTop />
         <Header />
 
         <main>
