@@ -1,7 +1,7 @@
 // App.jsx
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/Header';
@@ -28,8 +28,8 @@ function ScrollToTop() {
 
 function App() {
   return (
-    // Ensure router uses Vite base so routes match when served from a subpath (GitHub Pages)
-    <Router basename={import.meta.env.BASE_URL}>
+  // Use HashRouter for GitHub Pages so refreshes on nested routes work without server fallback
+  <Router>
       <Helmet>
         <html lang="de" />
         <title>PetraArt</title>
