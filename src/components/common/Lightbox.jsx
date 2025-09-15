@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Lightbox = ({ artwork, onClose, onInquiry }) => {
+const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onNextArtwork }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -19,15 +19,23 @@ const Lightbox = ({ artwork, onClose, onInquiry }) => {
         onClose();
       }
       if (e.key === 'ArrowRight') {
-        nextImage();
+        if (e.shiftKey && onNextArtwork) {
+          onNextArtwork();
+        } else {
+          nextImage();
+        }
       }
       if (e.key === 'ArrowLeft') {
-        prevImage();
+        if (e.shiftKey && onPrevArtwork) {
+          onPrevArtwork();
+        } else {
+          prevImage();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [artwork, currentIndex]);
+  }, [artwork, currentIndex, onNextArtwork, onPrevArtwork]);
 
   if (!artwork) return null;
 
@@ -106,8 +114,7 @@ const Lightbox = ({ artwork, onClose, onInquiry }) => {
 
             <div className="lg:w-1/3 w-full h-1/2 lg:h-full flex flex-col p-8 overflow-y-auto">
               <div className="flex-grow">
-                <h2 className="text-3xl font-light text-gray-900 mb-2">{artwork.title}</h2>
-                <p className="text-gold text-lg mb-6">{artwork.price}</p>
+                <h2 className="text-3xl font-light text-gray-900 mb-6">{artwork.title}</h2>
                 <div className="space-y-4 text-gray-600 mb-6">
                     <div>
                         <p className="font-medium text-gray-800">Details</p>
@@ -138,6 +145,33 @@ const Lightbox = ({ artwork, onClose, onInquiry }) => {
               >
                 <X className="h-6 w-6" />
             </Button>
+            
+            {/* Artwork Navigation Buttons */}
+            {allArtworks && allArtworks.length > 1 && (
+              <>
+                {onPrevArtwork && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 rounded-full z-20"
+                    onClick={onPrevArtwork}
+                  >
+                    <ChevronLeft className="h-8 w-8" />
+                  </Button>
+                )}
+                
+                {onNextArtwork && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 rounded-full z-20"
+                    onClick={onNextArtwork}
+                  >
+                    <ChevronRight className="h-8 w-8" />
+                  </Button>
+                )}
+              </>
+            )}
           </motion.div>
         </motion.div>
       )}

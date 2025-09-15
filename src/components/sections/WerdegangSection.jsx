@@ -36,19 +36,20 @@ const timeline = [
 
 const WerdegangSection = () => {
   return (
-    <section className="pt-32 pb-20 bg-white">
-      <div className="container mx-auto px-6">
-        <motion.div className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="section-divider mb-8 mx-auto"></div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-            Mein <span className="text-gold">Werdegang.</span>
-          </h2>
-        </motion.div>
+    <>
+      <div className="section-divider"></div>
+      <section className="pt-32 pb-20 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Mein <span className="text-gold">Werdegang.</span>
+            </h2>
+          </motion.div>
 
         <div className="max-w-4xl mx-auto relative">
           {timeline.map((item, index) => (
@@ -75,6 +76,7 @@ const WerdegangSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

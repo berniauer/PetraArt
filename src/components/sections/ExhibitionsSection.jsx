@@ -108,6 +108,23 @@ const ExhibitionsSection = () => {
       description: "Vielen Dank für Ihr Interesse! Ich melde mich bald bei Ihnen.",
     });
   };
+  
+  // Exhibition Navigation in Lightbox
+  const handlePrevExhibition = () => {
+    if (selectedExhibition) {
+      const currentIndex = exhibitions.findIndex(ex => ex.year === selectedExhibition.year && ex.title === selectedExhibition.title);
+      const prevIndex = currentIndex > 0 ? currentIndex - 1 : exhibitions.length - 1;
+      setSelectedExhibition(exhibitions[prevIndex]);
+    }
+  };
+  
+  const handleNextExhibition = () => {
+    if (selectedExhibition) {
+      const currentIndex = exhibitions.findIndex(ex => ex.year === selectedExhibition.year && ex.title === selectedExhibition.title);
+      const nextIndex = currentIndex < exhibitions.length - 1 ? currentIndex + 1 : 0;
+      setSelectedExhibition(exhibitions[nextIndex]);
+    }
+  };
   const getTypeColor = (type) => {
     switch (type) {
       case 'solo': return 'bg-gold text-white';
@@ -127,19 +144,20 @@ const ExhibitionsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <motion.div className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="section-divider mb-8 mx-auto"></div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-            Meine <span className="text-gold">Ausstellungen.</span>
-          </h2>
-        </motion.div>
+    <>
+      <div className="section-divider"></div>
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <motion.div className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Meine <span className="text-gold">Ausstellungen.</span>
+            </h2>
+          </motion.div>
 
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -186,8 +204,12 @@ const ExhibitionsSection = () => {
         isOpen={!!selectedExhibition}
         onClose={handleCloseLightbox}
         onInquiry={handleInquiry}
+        allExhibitions={exhibitions}
+        onPrevExhibition={handlePrevExhibition}
+        onNextExhibition={handleNextExhibition}
       />
     </section>
+    </>
   );
 };
 

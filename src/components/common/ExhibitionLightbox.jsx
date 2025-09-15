@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, Users, Award } from 'lucide-react';
+import { X, Calendar, MapPin, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry }) => {
+const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibitions, onPrevExhibition, onNextExhibition }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -13,8 +13,38 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry }) => {
       setImageError(false);
     }
   }, [isOpen, exhibition]);
+  
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') {
+        onClose();
+      }
+      if (e.key === 'ArrowRight' && e.shiftKey && onNextExhibition) {
+        onNextExhibition();
+      }
+      if (e.key === 'ArrowLeft' && e.shiftKey && onPrevExhibition) {
+        onPrevExhibition();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onNextExhibition, onPrevExhibition, onClose]);
 
   if (!exhibition) return null;
+
+  // Resolve image src relative to Vite base so GitHub Pages (repo subpath) works
+  const getImageSrc = (img) => {
+    if (!img) return img;
+    try {
+      // absolute URL -> leave as is
+      const url = new URL(img);
+      return img;
+    } catch (e) {
+      // relative path -> prefix with BASE_URL
+      return import.meta.env.BASE_URL + img.replace(/^\//, '');
+    }
+  };
 
   const getTypeIcon = (type) => {
     switch (type) {
@@ -53,6 +83,39 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry }) => {
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
+          {/* Exhibition Navigation Buttons - Outside main container */}
+          {allExhibitions && allExhibitions.length > 1 && (
+            <>
+              {onPrevExhibition && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 rounded-full z-20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onPrevExhibition();
+                  }}
+                >
+                  <ChevronLeft className="h-8 w-8" />
+                </Button>
+              )}
+              
+              {onNextExhibition && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 text-white hover:bg-black/40 rounded-full z-20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNextExhibition();
+                  }}
+                >
+                  <ChevronRight className="h-8 w-8" />
+                </Button>
+              )}
+            </>
+          )}
+          
           <motion.div
             className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto flex flex-col"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -73,7 +136,7 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry }) => {
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-3xl font-bold">{exhibition.year}</div>
-                <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${getTypeColor(exhibition.type)} bg-white/20 text-white`}>
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${getTypeColor(exhibition.type)}`}>
                   {getTypeIcon(exhibition.type)}
                   {getTypeLabel(exhibition.type)}
                 </div>
@@ -84,12 +147,23 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry }) => {
               </h2>
             </div>
 
+            {/* Tag with Exhibition Title - Above Image */}
+            <div className="px-6 py-4 bg-gray-50 border-b">
+              <div className="flex items-center gap-4">
+                <div className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium flex-shrink-0 ${getTypeColor(exhibition.type)}`}>
+                  {getTypeIcon(exhibition.type)}
+                  {getTypeLabel(exhibition.type)}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 flex-grow">{exhibition.title}</h3>
+              </div>
+            </div>
+
             {/* Image Section */}
-            {exhibition.image && (
+      {exhibition.image && (
               <div className="flex-shrink-0 p-6 bg-gray-50">
                 <div className="flex justify-center">
                   <img
-                    src={exhibition.image}
+        src={getImageSrc(exhibition.image)}
                     alt={exhibition.title}
                     className="max-w-full max-h-96 object-cover rounded-2xl shadow-lg"
                     onLoad={() => setImageLoaded(true)}

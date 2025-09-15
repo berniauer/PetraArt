@@ -51,14 +51,14 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
           
-          <motion.div
+      <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
             <div className="relative art-shadow rounded-2xl overflow-hidden">
-              <img  alt="Ein eleganter Raum mit einem großen, abstrakten Kunstwerk von Petra Fimberger an der Wand" className="w-full h-[600px] object-cover" src="art/bitte-laecheln-total.jpg" />
+        <img  alt="Ein eleganter Raum mit einem großen, abstrakten Kunstwerk von Petra Fimberger an der Wand" className="w-full h-[600px] object-cover" src={import.meta.env.BASE_URL + 'art/bitte-laecheln-total.jpg'} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </motion.div>
