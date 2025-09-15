@@ -28,7 +28,8 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
+    // Ensure router uses Vite base so routes match when served from a subpath (GitHub Pages)
+    <Router basename={import.meta.env.BASE_URL}>
       <Helmet>
         <html lang="de" />
         <title>PetraArt</title>
@@ -36,7 +37,7 @@ function App() {
           name="description"
           content="Entdecken Sie einzigartige, abstrakte Kunstwerke, die Ihrem Zuhause eine Seele geben. Jedes Bild ist ein handgemaltes Original voller Energie und Persönlichkeit."
         />
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="icon" type="image/png" href={import.meta.env.BASE_URL + 'favicon.png'} />
       </Helmet>
 
       <div className="min-h-screen bg-white font-stolzl">
