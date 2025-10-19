@@ -101,6 +101,11 @@ const Header = () => {
             />
           </a>
 
+          {/* Center status label (non-interactive) */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 pointer-events-none">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">in entwicklung</span>
+          </div>
+
           {/* Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map(({ name, href }) => {

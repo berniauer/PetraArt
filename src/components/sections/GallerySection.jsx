@@ -14,7 +14,6 @@ const artworks = [
         year: 2023
     },
     emotionalDescription: "Eine Studie in Gegensätzen. Kräftiges, fast aggressives Rot trifft auf verletzliche Silhouetten. Die spielerischen Punkte stehen im Kontrast zur ernsten Szene. Dieses Bild ist kein stiller Wandschmuck – es ist ein Gesprächsstarter über die Masken, die wir tragen, und die Emotionen, die darunter brodeln.",
-    price: "€ 1.450",
     images: [
         "art/bitte-laecheln-total.jpg",
         "art/bitte-laecheln-detail.jpg",
@@ -30,7 +29,6 @@ const artworks = [
         year: 2024
     },
     emotionalDescription: "Für Momente, in denen sich Perfektion unpersönlich anfühlt. Dieses Werk ist der Herzschlag für Ihre Wände. Es ist komplex, ein wenig chaotisch, aber gleichzeitig elegant – genau wie das Leben selbst. Entdecken Sie jeden Tag eine neue Linie, eine neue Schicht, eine neue Geschichte.",
-    price: "€ 1.800",
     images: [
         "art/fabelhafte-komplexitaet-total.jpg",
         "art/fabelhafte-komplexitaet-detail.jpg",
@@ -46,7 +44,6 @@ const artworks = [
         year: 2024
     },
     emotionalDescription: "Für Momente, in denen sich Perfektion unpersönlich anfühlt. Dieses Werk ist der Herzschlag für Ihre Wände. Es ist komplex, ein wenig chaotisch, aber gleichzeitig elegant – genau wie das Leben selbst. Entdecken Sie jeden Tag eine neue Linie, eine neue Schicht, eine neue Geschichte.",
-    price: "€ 1.800",
     images: [
         "art/der-kuh-total.jpg",
         "art/der-kuh-detail.jpg",
@@ -62,7 +59,6 @@ const artworks = [
         year: 2023
     },
     emotionalDescription: "Ein intimer Blick in die Seele. Dieses Werk lädt zum Nachdenken ein über Identität, Selbstreflexion und die Frage: Wer bin ich wirklich? Die warmen Farbtöne und abstrakten Formen schaffen eine Atmosphäre der Kontemplation.",
-    price: "€ 1.200",
     images: [
         "art/its_me.jpg",
         "art/its_me.jpg",
