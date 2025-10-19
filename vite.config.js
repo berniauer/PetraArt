@@ -190,7 +190,10 @@ logger.error = (msg, options) => {
 }
 
 export default defineConfig({
-	base: process.env.NODE_ENV === 'production' ? '/PetraArt/' : '/',
+	// Deployed to the site root (https://www.petra-art.at), not a subpath
+	// Ensure asset paths are generated relative to '/' so the production
+	// build doesn't prefix with '/PetraArt/'.
+	base: '/',
 	customLogger: logger,
 	plugins: [
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin()] : []),

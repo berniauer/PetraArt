@@ -1,7 +1,7 @@
 // App.jsx
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/Header';
@@ -28,8 +28,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-  // Use HashRouter for GitHub Pages so refreshes on nested routes work without server fallback
-  <Router>
+    <Router>
       <Helmet>
         <html lang="de" />
         <title>PetraArt</title>
@@ -37,7 +36,7 @@ function App() {
           name="description"
           content="Entdecken Sie einzigartige, abstrakte Kunstwerke, die Ihrem Zuhause eine Seele geben. Jedes Bild ist ein handgemaltes Original voller Energie und Persönlichkeit."
         />
-        <link rel="icon" type="image/png" href={import.meta.env.BASE_URL + 'favicon.png'} />
+        <link rel="icon" type="image/png" href="favicon.png" />
       </Helmet>
 
       <div className="min-h-screen bg-white font-stolzl">
