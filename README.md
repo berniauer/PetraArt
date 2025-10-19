@@ -46,4 +46,4 @@ Projektverantwortlicher: <Name> — ersetze durch deine Kontaktinformationen.
 
 <!-- TODO: README an konkret verwendete Technologien, Ordnerstruktur und Beispiele anpassen -->
 
-Test
+Test Authkey
