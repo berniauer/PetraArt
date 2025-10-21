@@ -34,7 +34,7 @@ const ArtistSection = () => {
               Meine Kunst ist ein Dialog zwischen Kontrolle und Chaos. Jede Schicht, jeder Pinselstrich, jede hingeworfene Notiz ist ein Fragment einer Geschichte. Ich male nicht, um perfekte Oberflächen zu schaffen, sondern um die vielschichtige, unperfekte und energiegeladene Essenz des Lebens einzufangen. Ein Bild ist für mich dann fertig, wenn es eine eigene Persönlichkeit hat – wenn es atmet.
             </p>
             <div className="mt-8">
-              <img  alt="Eingescannte Unterschrift der Künstlerin Petra Fimberger" className="h-16 w-auto opacity-70" src="https://images.unsplash.com/photo-1636407161775-085bf8adf747" />
+              <img  alt="Eingescannte Unterschrift der Künstlerin Petra Fimberger" className="h-16 w-auto opacity-70" src={import.meta.env.BASE_URL + 'petra-fimberger-atelier.jpg'} />
             </div>
 
             <div className="mt-8">
