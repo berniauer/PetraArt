@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -17,8 +18,8 @@ const Footer = () => {
             © 2025 Petra Fimberger. Alle Kunstwerke sind urheberrechtlich geschützt.
           </p>
           <div className="mt-4">
-            <a href="/impressum" className="text-sm text-gray-500 hover:text-gold mr-4">Impressum</a>
-            <a href="/agbs" className="text-sm text-gray-500 hover:text-gold">AGBs</a>
+            <Link to="/impressum" className="text-sm text-gray-500 hover:text-gold mr-4">Impressum</Link>
+            <Link to="/agbs" className="text-sm text-gray-500 hover:text-gold">AGBs</Link>
           </div>
         </div>
       </div>
