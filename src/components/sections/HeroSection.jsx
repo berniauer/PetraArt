@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
+    <>
     <section id="top" className="relative min-h-screen pt-20 flex items-center justify-center hero-gradient overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-32 h-32 bg-gold rounded-full blur-3xl"></div>
@@ -64,8 +65,10 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+  </section>
+  <div className="section-divider" aria-hidden="true"></div>
+  </>
+   );
 };
 
 export default HeroSection;

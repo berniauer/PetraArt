@@ -114,8 +114,17 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
 
             <div className="lg:w-1/3 w-full h-1/2 lg:h-full flex flex-col p-8 overflow-y-auto">
               <div className="flex-grow">
-                <h2 className="text-3xl font-light text-gray-900 mb-6">{artwork.title}</h2>
-                <div className="space-y-4 text-gray-600 mb-6">
+                <h2 className="text-3xl font-light text-gray-900 mb-4">{artwork.title}</h2>
+                <div className="mb-6">
+                  <Button
+                    className="w-full bg-gold hover:bg-gold text-white py-3 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={onInquiry}
+                  >
+                    Kunstwerk anfragen
+                  </Button>
+                </div>
+
+                <div className="space-y-4 text-gray-600">
                     <div>
                         <p className="font-medium text-gray-800">Details</p>
                         <p>{artwork.details.dimensions} • {artwork.details.technique} • {artwork.details.year}</p>
@@ -125,15 +134,6 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
                         <p>{artwork.emotionalDescription}</p>
                     </div>
                 </div>
-              </div>
-
-              <div className="flex-shrink-0">
-                <Button
-                  className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={onInquiry}
-                >
-                  Kunstwerk anfragen
-                </Button>
               </div>
             </div>
             

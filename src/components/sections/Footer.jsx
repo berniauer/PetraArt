@@ -2,7 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-white text-gray-800 py-12">
+      <div className="section-divider-long" aria-hidden="true"></div>
       <div className="container mx-auto px-6">
         <div className="text-center">
           <div className="mb-6">
@@ -12,8 +13,7 @@ const Footer = () => {
           <p className="text-gray-400 mb-6">
             Kunst, die berührt. Werke, die bewegen. Emotionen, die bleiben.
           </p>
-          <div className="section-divider bg-gold mb-6"></div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 mb-6">
             © 2025 Petra Fimberger. Alle Kunstwerke sind urheberrechtlich geschützt.
           </p>
           <div className="mt-4">

@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Toaster } from '@/components/ui/toaster';
@@ -31,7 +31,8 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
+    <HelmetProvider>
+      <Router>
       <Helmet>
         <html lang="de" />
         <title>PetraArt</title>
@@ -40,9 +41,9 @@ function App() {
           content="Entdecken Sie einzigartige, abstrakte Kunstwerke, die Ihrem Zuhause eine Seele geben. Jedes Bild ist ein handgemaltes Original voller Energie und Persönlichkeit."
         />
         <link rel="icon" type="image/png" href="favicon.png" />
-      </Helmet>
+  </Helmet>
 
-      <div className="min-h-screen bg-white font-stolzl">
+  <div className="min-h-screen bg-white font-stolzl">
         <ScrollToTop />
         <Header />
 
@@ -76,7 +77,8 @@ function App() {
         <Toaster />
         <CookieBanner />
       </div>
-    </Router>
+      </Router>
+    </HelmetProvider>
   );
 }
 

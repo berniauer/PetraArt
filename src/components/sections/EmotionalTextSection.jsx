@@ -12,7 +12,6 @@ const EmotionalTextSection = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="section-divider mb-12"></div>
           <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8">
             Wenn Stil allein
             <span className="text-gold block">nicht genug ist.</span>

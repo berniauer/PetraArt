@@ -106,3 +106,12 @@ body {
   width: 100px;
   margin: 0 auto;
 }
+
+/* long gold divider used between major sections */
+.section-divider-long {
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(212,175,55,0) 0%, #D4AF37 20%, #F4E4BC 50%, #D4AF37 80%, rgba(212,175,55,0) 100%);
+  margin: 2rem 0;
+}
+

@@ -134,7 +134,7 @@ const Header = () => {
 
           {/* Mobile Toggle */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-800">
+            <button aria-label="Menü öffnen" onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-800">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -144,27 +144,44 @@ const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            className="md:hidden bg-white/95 backdrop-blur-md shadow-lg"
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            transition={{ duration: 0.3 }}
-          >
-            <nav className="flex flex-col items-center space-y-6 py-8">
-              {navLinks.map(({ name, href }) => (
-                <a
-                  key={name}
-                  href={href}
-                  onClick={(e) => onNavClick(e, href)}
-                  className="text-lg stolzl-light uppercase tracking-wide hover:text-gold transition-colors"
-                >
-                  {name}
-                </a>
-              ))}
-            </nav>
-          </motion.div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/40 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            {/* Slide-in menu */}
+            <motion.aside
+              className="fixed inset-y-0 right-0 w-11/12 max-w-sm bg-white z-50 shadow-2xl p-6 flex flex-col"
+              variants={{ closed: { x: '100%' }, open: { x: 0 } }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              transition={{ type: 'tween', duration: 0.24 }}
+            >
+              <div className="flex justify-end mb-6">
+                <button aria-label="Schließen" onClick={() => setIsMenuOpen(false)} className="text-gray-700">
+                  <X size={24} />
+                </button>
+              </div>
+              <nav className="flex flex-col gap-6">
+                {navLinks.map(({ name, href }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    onClick={(e) => onNavClick(e, href)}
+                    className="text-lg stolzl-light uppercase tracking-wide hover:text-gold transition-colors"
+                  >
+                    {name}
+                  </a>
+                ))}
+              </nav>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </motion.header>
