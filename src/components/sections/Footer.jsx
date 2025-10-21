@@ -16,6 +16,10 @@ const Footer = () => {
           <p className="text-sm text-gray-500">
             © 2025 Petra Fimberger. Alle Kunstwerke sind urheberrechtlich geschützt.
           </p>
+          <div className="mt-4">
+            <a href="/impressum" className="text-sm text-gray-400 hover:text-white mr-4">Impressum</a>
+            <a href="/agbs" className="text-sm text-gray-400 hover:text-white">AGBs</a>
+          </div>
         </div>
       </div>
     </footer>

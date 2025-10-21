@@ -206,6 +206,21 @@ export default defineConfig({
 			'Cross-Origin-Embedder-Policy': 'credentialless',
 		},
 		allowedHosts: true,
+		// Dev proxy to avoid CORS when calling the external API from localhost
+		proxy: {
+			'/send-form': {
+				target: 'https://api.petra-art.at',
+				changeOrigin: true,
+				secure: true,
+				rewrite: (path) => path.replace(/^\/send-form/, '/send-form'),
+			},
+			'/api': {
+				target: 'https://api.petra-art.at',
+				changeOrigin: true,
+				secure: true,
+				rewrite: (path) => path.replace(/^\/api/, '/api'),
+			},
+		},
 	},
 	resolve: {
 		extensions: ['.jsx', '.js', '.tsx', '.ts', '.json', ],

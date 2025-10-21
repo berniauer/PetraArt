@@ -1,5 +1,21 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+/* Local font setup: place your downloaded font files in public/fonts/ and update names if necessary */
+/* Use the downloaded variable TTF fonts in public/fonts/ as a working fallback.
+   For optimal performance consider converting to WOFF2 (recommended) or
+   re-downloading WOFF2 via google-webfonts-helper. */
+@font-face {
+  font-family: 'InterLocal';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'InterLocal';
+  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,13 +52,13 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterLocal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 300;
   line-height: 1.6;
 }
 
 .font-stolzl {
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterLocal', sans-serif;
   font-weight: 300;
 }
 

@@ -14,6 +14,9 @@ import ArtistSection from '@/components/sections/ArtistSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 import ReferencesPage from '@/pages/references'; // Deine Timeline-Seite
+import Impressum from '@/pages/impressum';
+import Agb from '@/pages/agbs';
+import CookieBanner from '@/components/common/CookieBanner';
 
 // Komponente um automatisch nach oben zu scrollen bei Routenwechsel
 function ScrollToTop() {
@@ -64,11 +67,14 @@ function App() {
               path="/references"
               element={<ReferencesPage />}
             />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/agbs" element={<Agb />} />
           </Routes>
         </main>
 
         <Footer />
         <Toaster />
+        <CookieBanner />
       </div>
     </Router>
   );
