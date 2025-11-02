@@ -21,7 +21,7 @@ const Agb = () => {
         <p className="text-gray-700">Es gilt das Recht der Republik Österreich.</p>
       </div>
     </section>
-  );
+  );AC
 };
 
 export default Agb;

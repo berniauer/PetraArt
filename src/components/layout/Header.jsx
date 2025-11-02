@@ -13,10 +13,10 @@ const Header = () => {
 
   // Links: drei Anchors und eine Route
   const navLinks = [
-    { name: 'galerie', href: '#gallery' },
-    { name: 'über mich', href: '#about' },
-    { name: 'kontakt', href: '#contact' },
-    { name: 'referenzen', href: '/references' },
+    { name: 'gallery', href: '#gallery' },
+    { name: 'about', href: '#about' },
+    { name: 'contact', href: '#contact' },
+    { name: 'showing', href: '/references' },
   ];
 
   // Header-Hintergrund bei Scroll
@@ -95,7 +95,7 @@ const Header = () => {
           {/* Logo / Home */}
           <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
             <img
-              src={import.meta.env.BASE_URL + 'petra_transparet.png'}
+              src={import.meta.env.BASE_URL + 'petra_transparent_stempel.png'}
               alt="Petra Fimberger"
               className="h-12 w-auto md:h-14 lg:h-16"
             />
@@ -103,7 +103,7 @@ const Header = () => {
 
           {/* Center status label (non-interactive) */}
           <div className="absolute left-1/2 transform -translate-x-1/2 pointer-events-none">
-            <span className="text-sm text-gray-500 uppercase tracking-wider">in entwicklung</span>
+            <span className="text-sm text-gray-500 lowercase tracking-wider">in entwicklung</span>
           </div>
 
           {/* Desktop */}
@@ -118,7 +118,7 @@ const Header = () => {
                   href={href}
                   onClick={(e) => onNavClick(e, href)}
                   className={`
-                    relative stolzl-light uppercase tracking-wide transition-colors
+                    relative stolzl-light lowercase tracking-wide transition-colors
                     ${isActiveRoute || isActiveSection
                       ? 'text-gold after:scale-x-100'
                       : 'text-gray-600 after:scale-x-0 hover:text-gold'}

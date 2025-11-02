@@ -28,10 +28,18 @@ const ArtistSection = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-                Die Energie der <span className="text-gold">Intuition.</span>
+                Leinwand <span className="text-gold">Farbe</span> und ich
               </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Meine Kunst ist ein Dialog zwischen Kontrolle und Chaos. Jede Schicht, jeder Pinselstrich, jede hingeworfene Notiz ist ein Fragment einer Geschichte. Ich male nicht, um perfekte Oberflächen zu schaffen, sondern um die vielschichtige, unperfekte und energiegeladene Essenz des Lebens einzufangen. Ein Bild ist für mich dann fertig, wenn es eine eigene Persönlichkeit hat – wenn es atmet.
+            so entstehen Spuren meines Lebens – sie kommen, sind vielleicht vorbestimmt oder überraschen mich immer wieder aufs Neue.
+            </p>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+               Mal bunt, mal grau-weiß.
+            </p>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              Meine Empfindungen, Gefühle, Erlebnisse und Gedanken halte ich fest – auf Leinwand und Papier. Ohne zu wissen, wohin mich der Weg führt oder wie das Ende aussehen wird.
+            Unzählige Schichten entstehen nacheinander und das Bild beginnt zu erzählen. Dabei ist der Punkt Zeit, der wesentliche Maler. Ein Prozess, welchem ich folge, leite und zulasse. Farben verbinden sind, vieles bleibt, manches verschwindet. Neues wird wieder sichtbar. Schritt für Schritt gehen wir gemeinsam, es wird bunt – und beginnt zu erzählen.
+            Es ist ein wunderschöner, spannender, manchmal auch steiler Weg und dabei das Gefühl, niemals wirklich ans Ende zu gelangen.
             </p>
             <div className="mt-8">
               <img  alt="Eingescannte Unterschrift der Künstlerin Petra Fimberger" className="h-16 w-auto opacity-70" src={import.meta.env.BASE_URL + 'petra-fimberger-atelier.jpg'} />

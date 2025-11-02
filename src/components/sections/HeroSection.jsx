@@ -25,8 +25,8 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Gib deinem Zuhause
-              <span className="block text-gold font-normal">eine Seele.</span>
+              gib deinem zuhause
+              <span className="block text-gold font-normal">eine seele.</span>
             </motion.h1>
             
             <motion.p 
@@ -35,7 +35,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Entdecken Sie Kunst, die nicht nur Räume füllt, sondern Persönlichkeit ausstrahlt und Energie freisetzt.
+              die <span className="text-gold font-normal">Kunst</span> an der <span className="text-gold font-normal">Kunst</span> ist, dass sie uns nicht voneinander unterscheidet, sondern miteinander <span className="text-gold font-normal">verbindet</span>.
             </motion.p>
             
             <motion.div
@@ -47,7 +47,7 @@ const HeroSection = () => {
                 className="bg-gold hover:bg-gold text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })}
               >
-                → Die Galerie entdecken
+                → GALLERY
               </Button>
             </motion.div>
           </motion.div>
@@ -59,7 +59,7 @@ const HeroSection = () => {
             className="relative"
           >
             <div className="relative art-shadow rounded-2xl overflow-hidden">
-        <img  alt="Ein eleganter Raum mit einem großen, abstrakten Kunstwerk von Petra Fimberger an der Wand" className="w-full h-[600px] object-cover" src={import.meta.env.BASE_URL + 'art/bitte-laecheln-total.jpg'} />
+        <img  alt="Portrait: Petra Fimberger" className="w-full h-[320px] sm:h-[420px] md:h-[520px] lg:h-[600px] object-cover max-w-full" src={import.meta.env.BASE_URL + 'art/verliebt in dich.webp'} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </motion.div>

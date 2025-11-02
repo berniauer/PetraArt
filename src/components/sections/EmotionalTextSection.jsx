@@ -17,7 +17,10 @@ const EmotionalTextSection = () => {
             <span className="text-gold block">nicht genug ist.</span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Sie haben ein Auge für Design und Ihr Zuhause ist ein Spiegelbild Ihres Geschmacks. Doch manchmal fühlt sich Perfektion unpersönlich an. Sie sehnen sich nach dem einen Element, das nicht nur passt, sondern lebt. Nach einem Herzschlag für Ihre Wände, der Ihre eigene Geschichte erzählt und Austauschbarkeit durch Charakter ersetzt.
+            Du liebst Kunst und Design und bist auf der Suche nach Neuem.
+            Etwas Besonderem – das du gerne ansiehst, das dich umgibt und dich wohlfühlen lässt.
+            Etwas, das dich berührt und eine Geschichte erzählt.
+            Dann besuche meine Galerie und entdecke Kunst, die lebt und verbindet.
           </p>
         </motion.div>
       </div>

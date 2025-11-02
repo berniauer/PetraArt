@@ -69,7 +69,9 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
-                  src={artwork.images[currentIndex]}
+                  src={(artwork.images[currentIndex].startsWith('http')
+                    ? artwork.images[currentIndex]
+                    : import.meta.env.BASE_URL + encodeURI(artwork.images[currentIndex].replace(/^\//, '')))}
                   alt={`${artwork.title} - Ansicht ${currentIndex + 1}`}
                   className="max-h-full max-w-full object-contain"
                   initial={{ opacity: 0, x: 50 }}
