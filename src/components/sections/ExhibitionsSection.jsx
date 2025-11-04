@@ -4,90 +4,17 @@ import ExhibitionLightbox from '@/components/common/ExhibitionLightbox';
 import { useToast } from '@/components/ui/use-toast';
 
 const exhibitions = [
-  {
-    year: '2024',
-    title: 'Einzelausstellung "Layers of Emotion"',
-    location: 'Galerie Modern Arts, New York',
-    description: 'Erste internationale Einzelausstellung mit 25 großformatigen Werken. Fokus auf die Verbindung zwischen abstrakter Malerei und emotionaler Tiefe. Diese Ausstellung markierte den Durchbruch auf dem internationalen Kunstmarkt und erhielt begeisterte Kritiken von renommierten Kunstkritikern.',
-    type: 'solo',
-    image: 'art/fabelhafte-komplexitaet-raum.jpg',
-    details: {
-      duration: '3 Monate',
-      works: '25 Werke',
-      curator: 'Dr. Sarah Mitchell',
-      visitors: '15.000+'
-    }
-  },
-  {
-    year: '2023',
-    title: 'Gruppenausstellung "Neue Stimmen"',
-    location: 'Museum für Gegenwartskunst, Wien',
-    description: 'Teilnahme an prestigeträchtiger Gruppenausstellung mit aufstrebenden österreichischen Künstlern. Die Ausstellung zeigte eine neue Generation von Künstlern, die traditionelle Techniken mit zeitgenössischen Themen verbinden.',
-    type: 'group',
-    image: 'art/bitte-laecheln-raum.jpg',
-    details: {
-      duration: '4 Monate',
-      works: '8 Werke',
-      curator: 'Prof. Michael Weber',
-      visitors: '25.000+'
-    }
-  },
-  {
-    year: '2022',
-    title: 'Einzelausstellung "Fragmente der Seele"',
-    location: 'Galerie Zeitgenössisch, München',
-    description: 'Retrospektive der letzten fünf Schaffensjahre mit interaktiven Elementen und Künstlergesprächen. Diese Ausstellung bot einen umfassenden Einblick in die künstlerische Entwicklung und experimentellen Ansätze.',
-    type: 'solo',
-    image: 'art/der-kuh-raum.jpg',
-    details: {
-      duration: '6 Wochen',
-      works: '18 Werke',
-      curator: 'Anna Zimmermann',
-      visitors: '8.500+'
-    }
-  },
-  {
-    year: '2021',
-    title: 'Kunstmesse Art Basel',
-    location: 'Basel, Schweiz',
-    description: 'Präsentation ausgewählter Werke im Rahmen der renommierten internationalen Kunstmesse. Erste Teilnahme an einer der wichtigsten Kunstmessen weltweit, die zu neuen internationalen Sammler-Kontakten führte.',
-    type: 'fair',
-    image: 'art/bitte-laecheln-raum.jpg',
-    details: {
-      duration: '5 Tage',
-      works: '12 Werke',
-      curator: 'Galerie ArtPoint',
-      visitors: '95.000+'
-    }
-  },
-  {
-    year: '2020',
-    title: 'Gruppenausstellung "Pandemie & Kunst"',
-    location: 'Künstlerhaus, Salzburg',
-    description: 'Digitale und physische Ausstellung zum Thema künstlerischer Ausdruck während der Corona-Pandemie. Eine innovative Hybridausstellung, die neue Wege der Kunstpräsentation erforschte.',
-    type: 'group',
-    image: 'art/fabelhafte-komplexitaet-raum.jpg',
-    details: {
-      duration: '8 Wochen',
-      works: '6 Werke',
-      curator: 'Kollektiv Salzburg',
-      visitors: '12.000+ (hybrid)'
-    }
-  },
-  {
-    year: '2019',
-    title: 'Einzelausstellung "Erste Schritte"',
-    location: 'Galerie ArtPoint, München',
-    description: 'Debüt-Einzelausstellung mit frühen Werken und experimentellen Techniken. Der erste große Erfolg, der den Grundstein für die weitere künstlerische Laufbahn legte.',
-    type: 'solo',
-    image: 'art/der-kuh-raum.jpg',
-    details: {
-      duration: '4 Wochen',
-      works: '15 Werke',
-      curator: 'Thomas Müller',
-      visitors: '3.200+'
-    }
-  }
+  { year: '2005', title: 'Atelier „Teilzeit“', location: 'Lokales Atelier', image: 'art/exhibitions/2005-atelier-teilzeit.jpg', images: [], description: '' },
+  { year: '2009', title: 'Ausstellung „ICH bin ICH“', location: 'Eugendorf', image: 'art/exhibitions/2009-ich-bin-ich.jpg', images: [], description: '' },
+  { year: '2012', title: 'Gemeinschaftsausstellung AVA', location: 'Chattanooga, USA', image: 'art/exhibitions/2012-ava-chattanooga.jpg', images: [], description: '' },
+  { year: '2015', title: 'Ausstellung Rathausgalerie Burghausen', location: 'Burghausen, Deutschland', image: 'art/exhibitions/2015-rathausgalerie-burghausen.jpg', images: [], description: '' },
+  { year: '2016', title: 'Wechselausstellung Gasthaus Peer', location: 'Moosdorf', image: 'art/exhibitions/2016-gasthaus-peer.jpg', images: [], description: '' },
+  { year: '2016', title: 'Gemeinschaftsausstellung Artlet', location: 'Salzburg', image: 'art/exhibitions/2016-artlet-salzburg.jpg', images: [], description: '' },
+  { year: '2016-2023', title: 'Schaufenster Laufen', location: 'Laufen', image: 'art/exhibitions/2016-2023-schaufenster-laufen.jpg', images: [], description: '' },
+  { year: '2017', title: 'Gemeinschaftsausstellung, Heimatwerk', location: 'Salzburg', image: 'art/exhibitions/2017-heimatwerk-salzburg.jpg', images: [], description: '' },
+  { year: '2017', title: 'Ausstellung „Lamprechtshausen MAL anders“', location: 'Gemeindeamt Lamprechtshausen', image: 'art/exhibitions/2017-lamprechtshausen.jpg', images: [], description: '' },
+  { year: '2018', title: 'Ausstellung Kapuzinerhof Laufen', location: 'Laufen, Deutschland', image: 'art/exhibitions/2018-kapuzinerhof-laufen.jpg', images: [], description: '' },
+  { year: '2019-2024', title: "Wechselausstellung s`Gwölb im Thurmhof", location: 'Moosdorf', image: 'art/exhibitions/2019-2024-sgwoelb-thurmhof.jpg', images: [], description: '' }
 ];
 
 const ExhibitionsSection = () => {

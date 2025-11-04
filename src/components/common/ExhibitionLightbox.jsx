@@ -6,11 +6,13 @@ import { Button } from '@/components/ui/button';
 const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibitions, onPrevExhibition, onNextExhibition }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
       setImageLoaded(false);
       setImageError(false);
+      setImageIndex(0);
     }
   }, [isOpen, exhibition]);
   
@@ -71,6 +73,16 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibit
       case 'fair': return 'Kunstmesse';
       default: return '';
     }
+  };
+
+  const imagesForExhibition = exhibition.images && exhibition.images.length > 0 ? exhibition.images : (exhibition.image ? [exhibition.image] : []);
+
+  const prevImage = () => {
+    setImageIndex((i) => (i > 0 ? i - 1 : imagesForExhibition.length - 1));
+  };
+
+  const nextImage = () => {
+    setImageIndex((i) => (i < imagesForExhibition.length - 1 ? i + 1 : 0));
   };
 
   return (
@@ -158,18 +170,41 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibit
               </div>
             </div>
 
-            {/* Image Section */}
-      {exhibition.image && (
+            {/* Image Section: show carousel if multiple images */}
+            {imagesForExhibition.length > 0 && (
               <div className="flex-shrink-0 p-6 bg-gray-50">
-                <div className="flex justify-center">
+                <div className="flex items-center justify-center relative">
+                  <button
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white"
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
                   <img
-        src={getImageSrc(exhibition.image)}
+                    src={getImageSrc(imagesForExhibition[imageIndex])}
                     alt={exhibition.title}
-                    className="max-w-full max-h-96 object-cover rounded-2xl shadow-lg"
+                    className="max-w-full max-h-96 object-contain rounded-2xl shadow-lg"
                     onLoad={() => setImageLoaded(true)}
                     onError={() => setImageError(true)}
                   />
+                  <button
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white"
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
                 </div>
+                {imagesForExhibition.length > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-4">
+                    {imagesForExhibition.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={(e) => { e.stopPropagation(); setImageIndex(i); }}
+                        className={`w-2 h-2 rounded-full ${i === imageIndex ? 'bg-gold' : 'bg-gray-300'}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
