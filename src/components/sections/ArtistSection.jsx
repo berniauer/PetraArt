@@ -16,11 +16,11 @@ const ArtistSection = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="relative overflow-hidden flex items-center justify-center mx-auto max-w-[80vw] md:max-w-none h-auto md:h-[70vh] bg-transparent">
+              <div className="flex items-center justify-center mx-auto">
                 <img
                   alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier"
                   src="petra-fimberger-atelier.jpg"
-                  className="block rounded-2xl max-w-full max-h-full object-contain shadow-lg"
+                  className="block rounded-2xl shadow-lg max-w-[80vw] md:max-w-none md:max-h-[70vh] w-auto h-auto object-contain"
                 />
               </div>
             </motion.div>
