@@ -16,10 +16,10 @@ const Footer = () => {
           </div>
           {/* social icons (placeholders for links) */}
           <div className="flex items-center justify-center gap-4 mb-6">
-            <a href="#" aria-label="Instagram" className="text-gray-600 hover:text-gold transition-colors">
+            <a href="https://www.instagram.com/petra.art.at?igsh=MzNtaHh1NGlmOXJj&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-600 hover:text-gold transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="#" aria-label="Facebook" className="text-gray-600 hover:text-gold transition-colors">
+            <a href="https://www.facebook.com/share/17HzcHZVt4/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-gold transition-colors">
               <Facebook size={20} />
             </a>
           </div>
