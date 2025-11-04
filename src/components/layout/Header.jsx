@@ -95,7 +95,7 @@ const Header = () => {
           {/* Logo / Home */}
           <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
             <img
-              src={import.meta.env.BASE_URL + 'petra_transparet.png'}
+              src={import.meta.env.BASE_URL + 'petra_transparent_stempel.png'}
               alt="Petra Fimberger"
               className="h-12 w-auto md:h-14 lg:h-16"
             />
