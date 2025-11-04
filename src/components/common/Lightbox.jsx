@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -47,6 +47,65 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
     setCurrentIndex((prevIndex) => (prevIndex - 1 + artwork.images.length) % artwork.images.length);
   };
 
+  // Touch / gesture handling for mobile
+  const imgTouchStartX = useRef(null);
+  const imgTouchStartY = useRef(null);
+  const textTouchStartX = useRef(null);
+  const textTouchStartY = useRef(null);
+  const TOUCH_THRESHOLD = 50; // px
+
+  const handleImageTouchStart = (e) => {
+    const t = e.touches[0];
+    imgTouchStartX.current = t.clientX;
+    imgTouchStartY.current = t.clientY;
+  };
+
+  const handleImageTouchEnd = (e) => {
+    if (imgTouchStartX.current === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - imgTouchStartX.current;
+    const dy = t.clientY - imgTouchStartY.current;
+    imgTouchStartX.current = null;
+    imgTouchStartY.current = null;
+
+    // horizontal swipe only
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > TOUCH_THRESHOLD) {
+      if (dx < 0) {
+        // swipe left => next image
+        nextImage();
+      } else {
+        // swipe right => prev image
+        prevImage();
+      }
+    }
+  };
+
+  const handleTextTouchStart = (e) => {
+    const t = e.touches[0];
+    textTouchStartX.current = t.clientX;
+    textTouchStartY.current = t.clientY;
+  };
+
+  const handleTextTouchEnd = (e) => {
+    if (textTouchStartX.current === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - textTouchStartX.current;
+    const dy = t.clientY - textTouchStartY.current;
+    textTouchStartX.current = null;
+    textTouchStartY.current = null;
+
+    // horizontal swipe should navigate artworks (only when mostly horizontal)
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > TOUCH_THRESHOLD) {
+      if (dx < 0) {
+        // swipe left => next artwork
+        if (onNextArtwork) onNextArtwork();
+      } else {
+        // swipe right => prev artwork
+        if (onPrevArtwork) onPrevArtwork();
+      }
+    }
+  };
+
   return (
     <AnimatePresence>
       {artwork && (
@@ -66,7 +125,11 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             style={{ width: '70vw', height: '70vh', maxWidth: '1100px' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative lg:w-2/3 w-full h-full bg-gray-100 flex items-center justify-center">
+            <div
+              className="relative lg:w-2/3 w-full h-full bg-gray-100 flex items-center justify-center"
+              onTouchStart={handleImageTouchStart}
+              onTouchEnd={handleImageTouchEnd}
+            >
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
@@ -115,7 +178,11 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
               </div>
             </div>
 
-            <div className="lg:w-1/3 w-full h-full flex flex-col p-8 overflow-y-auto">
+            <div
+              className="lg:w-1/3 w-full h-full flex flex-col p-8 overflow-y-auto"
+              onTouchStart={handleTextTouchStart}
+              onTouchEnd={handleTextTouchEnd}
+            >
               <div className="flex-grow">
                 <h2 className="text-3xl font-light text-gray-900 mb-6">{artwork.title}</h2>
                 <div className="space-y-4 text-gray-600 mb-6">
