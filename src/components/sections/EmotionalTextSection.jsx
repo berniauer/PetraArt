@@ -19,31 +19,31 @@ const EmotionalTextSection = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="section-divider mb-12"></div>
           <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8">
             Wenn Stil allein
             <span className="text-gold block">nicht genug ist.</span>
           </h2>
 
-          {/* Toggle for desktop */}
-          <div className="hidden md:flex items-center gap-4 mb-6">
-            <span className="text-sm text-gray-500">Ansicht:</span>
-            <div className="inline-flex rounded-md bg-gray-100 p-1">
-              <button
-                className={`px-4 py-1 text-sm rounded-md ${typeof window !== 'undefined' && window.innerWidth >= 768 ? '' : ''}`}
-                onClick={() => setView('text')}
-                aria-pressed={false}
-              >
-                Text
-              </button>
-              <button
-                className="px-4 py-1 text-sm rounded-md"
-                onClick={() => setView('images')}
-                aria-pressed={false}
-              >
-                Bilder
-              </button>
-            </div>
+          {/* Golden, centered toggle for desktop — knob-only, labels removed */}
+          <div className="hidden md:flex items-center justify-center mb-6">
+            <button
+              type="button"
+              onClick={() => setView(view === 'images' ? 'text' : 'images')}
+              aria-pressed={view === 'text'}
+              aria-label="Ansicht wechseln"
+              className="relative w-40 h-10 rounded-full border-2 border-gold bg-transparent focus:outline-none shadow-lg"
+            >
+              {/* Knob: use left/right positioning and vertical centering */}
+              <span
+                className="absolute w-8 h-8 bg-gold rounded-full shadow-2xl"
+                style={{
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  left: view === 'text' ? 'calc(100% - 36px)' : '4px',
+                  transition: 'left 450ms cubic-bezier(0.2, 0.9, 0.3, 1)'
+                }}
+              />
+            </button>
           </div>
 
           {/* Content area */}

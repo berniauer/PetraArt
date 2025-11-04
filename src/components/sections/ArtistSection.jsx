@@ -16,8 +16,12 @@ const ArtistSection = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="relative overflow-hidden rounded-2xl art-shadow">
-                <img  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier" className="w-full max-h-[75vh] h-auto object-contain" src="petra-fimberger-atelier.jpg" />
+              <div className="relative overflow-hidden flex items-center justify-center mx-auto max-w-[80vw] md:max-w-none h-auto md:h-[70vh] bg-transparent">
+                <img
+                  alt="Foto der Künstlerin Petra Fimberger in ihrem Atelier"
+                  src="petra-fimberger-atelier.jpg"
+                  className="block rounded-2xl max-w-full max-h-full object-contain shadow-lg"
+                />
               </div>
             </motion.div>
             
@@ -30,25 +34,29 @@ const ArtistSection = () => {
               <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
                 Leinwand <span className="text-gold">Farbe</span> und ich
               </h2>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            so entstehen Spuren meines Lebens – sie kommen, sind vielleicht vorbestimmt oder überraschen mich immer wieder aufs Neue.
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              So entstehen <span className="text-gold font-semibold">Spuren meines Lebens</span> – sie kommen, sind vielleicht vorbestimmt oder überraschen mich immer wieder aufs Neue.
+            </p>
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              <span className="font-semibold">Mal bunt, mal grau-weiß.</span>
+            </p>
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              Meine Empfindungen, Gefühle, Erlebnisse und Gedanken halte ich fest – auf <span className="text-gold font-semibold">Leinwand und Papier</span>. Ohne zu wissen, wohin mich der Weg führt oder wie das Ende aussehen wird.
+            </p>
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              <span className="text-gold font-semibold">Unzählige Schichten</span> entstehen nacheinander und das Bild beginnt zu erzählen. Dabei ist der Punkt <span className="font-semibold">Zeit</span>, der wesentliche Maler. Ein <span className="text-gold font-semibold">Prozess</span>, welchem ich folge, leite und zulasse. <span className="text-gold font-semibold">Farben verbinden</span> – vieles bleibt, manches verschwindet. Neues wird wieder sichtbar. <span className="font-semibold">Schritt für Schritt</span> gehen wir gemeinsam, es wird bunt – und beginnt zu erzählen.
             </p>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-               Mal bunt, mal grau-weiß.
+              Es ist ein <span className="text-gold font-semibold">wunderschöner, spannender</span>, manchmal auch steiler Weg und dabei das Gefühl, <span className="font-semibold">niemals wirklich ans Ende zu gelangen</span>.
             </p>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Meine Empfindungen, Gefühle, Erlebnisse und Gedanken halte ich fest – auf Leinwand und Papier. Ohne zu wissen, wohin mich der Weg führt oder wie das Ende aussehen wird.
-            Unzählige Schichten entstehen nacheinander und das Bild beginnt zu erzählen. Dabei ist der Punkt Zeit, der wesentliche Maler. Ein Prozess, welchem ich folge, leite und zulasse. Farben verbinden sind, vieles bleibt, manches verschwindet. Neues wird wieder sichtbar. Schritt für Schritt gehen wir gemeinsam, es wird bunt – und beginnt zu erzählen.
-            Es ist ein wunderschöner, spannender, manchmal auch steiler Weg und dabei das Gefühl, niemals wirklich ans Ende zu gelangen.
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed italic">
+              … so fange ich immer wieder von vorn an.
             </p>
-            <div className="mt-8">
-              <img  alt="Eingescannte Unterschrift der Künstlerin Petra Fimberger" className="h-16 w-auto opacity-70" src={import.meta.env.BASE_URL + 'petra-fimberger-atelier.jpg'} />
-            </div>
 
             <div className="mt-8">
               <Link to="/references">
                 <Button className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                  Meinen Werdegang ansehen
+                  Meinen Werdegang
                 </Button>
               </Link>
           </div>
