@@ -36,6 +36,9 @@ const Footer = () => {
               <Link to="/impressum" className="text-sm text-gray-400 hover:text-white underline-offset-2 hover:underline">
                 Impressum
               </Link>
+              <Link to="/datenschutz" className="text-sm text-gray-400 hover:text-white underline-offset-2 hover:underline">
+                Datenschutz
+              </Link>
             </nav>
           </div>
         </div>

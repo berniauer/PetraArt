@@ -16,6 +16,7 @@ import ContactSection from '@/components/sections/ContactSection';
 import ReferencesPage from '@/pages/references'; // Deine Timeline-Seite
 import Impressum from '@/pages/impressum';
 import Agb from '@/pages/agbs';
+import Datenschutz from '@/pages/datenschutz';
 import CookieBanner from '@/components/common/CookieBanner';
 
 // Komponente um automatisch nach oben zu scrollen bei Routenwechsel
@@ -70,6 +71,7 @@ function App() {
             />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/agbs" element={<Agb />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
           </Routes>
         </main>
 
