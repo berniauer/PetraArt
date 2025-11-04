@@ -13,10 +13,10 @@ const Header = () => {
 
   // Links: drei Anchors und eine Route
   const navLinks = [
-    { name: 'gallery', href: '#gallery' },
-    { name: 'about', href: '#about' },
-    { name: 'contact', href: '#contact' },
-    { name: 'showing', href: '/references' },
+    { name: 'galerie', href: '#gallery' },
+    { name: 'über mich', href: '#about' },
+    { name: 'kontakt', href: '#contact' },
+    { name: 'referenzen', href: '/references' },
   ];
 
   // Header-Hintergrund bei Scroll
@@ -95,16 +95,11 @@ const Header = () => {
           {/* Logo / Home */}
           <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
             <img
-              src={import.meta.env.BASE_URL + 'petra_transparent_stempel.png'}
+              src={import.meta.env.BASE_URL + 'petra_transparet.png'}
               alt="Petra Fimberger"
               className="h-12 w-auto md:h-14 lg:h-16"
             />
           </a>
-
-          {/* Center status label (non-interactive) */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 pointer-events-none">
-            <span className="text-sm text-gray-500 lowercase tracking-wider">in entwicklung</span>
-          </div>
 
           {/* Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -118,7 +113,7 @@ const Header = () => {
                   href={href}
                   onClick={(e) => onNavClick(e, href)}
                   className={`
-                    relative stolzl-light lowercase tracking-wide transition-colors
+                    relative stolzl-light uppercase tracking-wide transition-colors
                     ${isActiveRoute || isActiveSection
                       ? 'text-gold after:scale-x-100'
                       : 'text-gray-600 after:scale-x-0 hover:text-gold'}
@@ -134,7 +129,7 @@ const Header = () => {
 
           {/* Mobile Toggle */}
           <div className="md:hidden">
-            <button aria-label="Menü öffnen" onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-800">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-800">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -144,44 +139,27 @@ const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/40 z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMenuOpen(false)}
-            />
-
-            {/* Slide-in menu */}
-            <motion.aside
-              className="fixed inset-y-0 right-0 w-11/12 max-w-sm bg-white z-50 shadow-2xl p-6 flex flex-col"
-              variants={{ closed: { x: '100%' }, open: { x: 0 } }}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              transition={{ type: 'tween', duration: 0.24 }}
-            >
-              <div className="flex justify-end mb-6">
-                <button aria-label="Schließen" onClick={() => setIsMenuOpen(false)} className="text-gray-700">
-                  <X size={24} />
-                </button>
-              </div>
-              <nav className="flex flex-col gap-6">
-                {navLinks.map(({ name, href }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    onClick={(e) => onNavClick(e, href)}
-                    className="text-lg stolzl-light uppercase tracking-wide hover:text-gold transition-colors"
-                  >
-                    {name}
-                  </a>
-                ))}
-              </nav>
-            </motion.aside>
-          </>
+          <motion.div
+            className="md:hidden bg-white/95 backdrop-blur-md shadow-lg"
+            variants={mobileMenuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            transition={{ duration: 0.3 }}
+          >
+            <nav className="flex flex-col items-center space-y-6 py-8">
+              {navLinks.map(({ name, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  onClick={(e) => onNavClick(e, href)}
+                  className="text-lg stolzl-light uppercase tracking-wide hover:text-gold transition-colors"
+                >
+                  {name}
+                </a>
+              ))}
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.header>

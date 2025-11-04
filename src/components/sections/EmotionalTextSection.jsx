@@ -12,15 +12,13 @@ const EmotionalTextSection = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
+          <div className="section-divider mb-12"></div>
           <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8">
             Wenn Stil allein
             <span className="text-gold block">nicht genug ist.</span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Du liebst Kunst und Design und bist auf der Suche nach Neuem.
-            Etwas Besonderem – das du gerne ansiehst, das dich umgibt und dich wohlfühlen lässt.
-            Etwas, das dich berührt und eine Geschichte erzählt.
-            Dann besuche meine Galerie und entdecke Kunst, die lebt und verbindet.
+            Sie haben ein Auge für Design und Ihr Zuhause ist ein Spiegelbild Ihres Geschmacks. Doch manchmal fühlt sich Perfektion unpersönlich an. Sie sehnen sich nach dem einen Element, das nicht nur passt, sondern lebt. Nach einem Herzschlag für Ihre Wände, der Ihre eigene Geschichte erzählt und Austauschbarkeit durch Charakter ersetzt.
           </p>
         </motion.div>
       </div>

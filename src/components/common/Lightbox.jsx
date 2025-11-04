@@ -62,14 +62,15 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white w-full max-w-6xl h-full max-h-[90vh] rounded-2xl flex flex-col lg:flex-row overflow-hidden"
+            className="bg-white w-full rounded-2xl flex flex-col lg:flex-row overflow-hidden"
+            style={{ width: '70vw', height: '70vh', maxWidth: '1100px' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative lg:w-2/3 w-full h-1/2 lg:h-full bg-gray-100 flex items-center justify-center">
+            <div className="relative lg:w-2/3 w-full h-full bg-gray-100 flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
-                  src={(artwork.images[currentIndex].startsWith('http')
+                  src={(artwork.images[currentIndex]?.startsWith('http')
                     ? artwork.images[currentIndex]
                     : import.meta.env.BASE_URL + encodeURI(artwork.images[currentIndex].replace(/^\//, '')))}
                   alt={`${artwork.title} - Ansicht ${currentIndex + 1}`}
@@ -114,19 +115,10 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
               </div>
             </div>
 
-            <div className="lg:w-1/3 w-full h-1/2 lg:h-full flex flex-col p-8 overflow-y-auto">
+            <div className="lg:w-1/3 w-full h-full flex flex-col p-8 overflow-y-auto">
               <div className="flex-grow">
-                <h2 className="text-3xl font-light text-gray-900 mb-4">{artwork.title}</h2>
-                <div className="mb-6">
-                  <Button
-                    className="w-full bg-gold hover:bg-gold text-white py-3 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={onInquiry}
-                  >
-                    Kunstwerk anfragen
-                  </Button>
-                </div>
-
-                <div className="space-y-4 text-gray-600">
+                <h2 className="text-3xl font-light text-gray-900 mb-6">{artwork.title}</h2>
+                <div className="space-y-4 text-gray-600 mb-6">
                     <div>
                         <p className="font-medium text-gray-800">Details</p>
                         <p>{artwork.details.dimensions} • {artwork.details.technique} • {artwork.details.year}</p>
@@ -136,6 +128,15 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
                         <p>{artwork.emotionalDescription}</p>
                     </div>
                 </div>
+              </div>
+
+              <div className="flex-shrink-0">
+                <Button
+                  className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={onInquiry}
+                >
+                  Kunstwerk anfragen
+                </Button>
               </div>
             </div>
             
