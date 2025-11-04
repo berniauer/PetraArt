@@ -45,7 +45,18 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
   const textTouchStartY = useRef(null);
   const TOUCH_THRESHOLD = 50; // px
 
-  
+  // Prevent the same tap that opened the lightbox from immediately closing it
+  const mountedAt = useRef(null);
+  useEffect(() => {
+    if (artwork) {
+      mountedAt.current = Date.now();
+      // helpful debug log when testing on device
+      // eslint-disable-next-line no-console
+      console.log('Lightbox mounted at', mountedAt.current, 'for artwork', artwork?.id);
+    } else {
+      mountedAt.current = null;
+    }
+  }, [artwork]);
 
   if (!artwork) return null;
 
@@ -109,19 +120,6 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
     }
   };
 
-  // Prevent the same tap that opened the lightbox from immediately closing it
-  const mountedAt = useRef(null);
-  useEffect(() => {
-    if (artwork) {
-      mountedAt.current = Date.now();
-      // helpful debug log when testing on device
-      // eslint-disable-next-line no-console
-      console.log('Lightbox mounted at', mountedAt.current, 'for artwork', artwork?.id);
-    } else {
-      mountedAt.current = null;
-    }
-  }, [artwork]);
-
   const handleOverlayClick = (e) => {
     // ignore clicks that happen within 300ms of mount (likely the same tap that opened it)
     if (mountedAt.current && Date.now() - mountedAt.current < 300) {
@@ -140,7 +138,7 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
-          onClick={onClose}
+          onClick={handleOverlayClick}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
