@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,26 +8,57 @@ import artworks from '@/lib/artworks';
 const GallerySection = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
   
+  // responsive items per page: desktop 3, tablet 2, mobile 1
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      if (w >= 1024) return 3; // lg and above
+      if (w >= 768) return 2; // md
+      return 1; // sm
+    };
+
+    const apply = () => {
+      const newCount = calc();
+      setItemsPerPage((prev) => {
+        if (prev === newCount) return prev;
+        // adjust startIndex so it's aligned to the new page size
+        setStartIndex((si) => {
+          const page = Math.floor(si / newCount);
+          const newStart = page * newCount;
+          // ensure bounds
+          return Math.min(newStart, Math.max(0, artworks.length - newCount));
+        });
+        return newCount;
+      });
+    };
+
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const nextPage = () => {
-    const newStartIndex = startIndex + 3;
+    const newStartIndex = startIndex + itemsPerPage;
     if (newStartIndex < artworks.length) {
       setStartIndex(newStartIndex);
     }
   };
   
   const prevPage = () => {
-    const newStartIndex = startIndex - 3;
+    const newStartIndex = startIndex - itemsPerPage;
     if (newStartIndex >= 0) {
       setStartIndex(newStartIndex);
     }
   };
   
   const getCurrentArtworks = () => {
-    return artworks.slice(startIndex, startIndex + 3);
+    return artworks.slice(startIndex, startIndex + itemsPerPage);
   };
   
-  const canGoNext = startIndex + 3 < artworks.length;
+  const canGoNext = startIndex + itemsPerPage < artworks.length;
   const canGoPrev = startIndex > 0;
   
   // Artwork Navigation in Lightbox
@@ -79,7 +110,7 @@ const GallerySection = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {getCurrentArtworks().map((artwork, index) => (
                 <motion.div
                   key={artwork.id}
@@ -137,14 +168,14 @@ const GallerySection = () => {
             )}
             
             {/* Dot Indicators */}
-            {artworks.length > 3 && (
+            {artworks.length > itemsPerPage && (
               <div className="flex justify-center mt-8 space-x-2">
-                {Array.from({ length: Math.ceil(artworks.length / 3) }, (_, index) => (
+                {Array.from({ length: Math.ceil(artworks.length / itemsPerPage) }, (_, index) => (
                   <button
                     key={index}
-                    onClick={() => setStartIndex(index * 3)}
+                    onClick={() => setStartIndex(index * itemsPerPage)}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      Math.floor(startIndex / 3) === index ? 'bg-gold' : 'bg-gray-300 hover:bg-gray-400'
+                      Math.floor(startIndex / itemsPerPage) === index ? 'bg-gold' : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
                 ))}

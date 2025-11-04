@@ -15,11 +15,10 @@ const artworks = [
 			'/art/Gallery/1 einigschaut detail.webp',
 			'/art/Gallery/1 einigschaut raum.webp'
 		],
-		details: {
-			dimensions: '80 x 60 cm',
-			technique: 'Acryl auf Leinwand',
-			year: '2022'
-		},
+			details: {
+				dimensions: '80 x 60 cm',
+				technique: 'Acryl auf Leinwand'
+			},
 		emotionalDescription: 'Ein nachdenkliches, ruhiges Stück mit subtilen Farbschichten.'
 	},
 	{
@@ -30,11 +29,10 @@ const artworks = [
 			'/art/Gallery/2 fabelhaft detail.webp',
 			'/art/Gallery/2 fabelhaft raum.webp'
 		],
-		details: {
-			dimensions: '70 x 50 cm',
-			technique: 'Mixed Media',
-			year: '2021'
-		},
+			details: {
+				dimensions: '70 x 50 cm',
+				technique: 'Mixed Media'
+			},
 		emotionalDescription: 'Verspielt und erzählerisch: Formen und Texturen führen in eine kleine Fantasiewelt.'
 	},
 	{
@@ -45,11 +43,10 @@ const artworks = [
 			'/art/Gallery/3 locker detail.webp',
 			'/art/Gallery/3 locker raum.webp'
 		],
-		details: {
-			dimensions: '60 x 80 cm',
-			technique: 'Acryl',
-			year: '2020'
-		},
+			details: {
+				dimensions: '60 x 80 cm',
+				technique: 'Acryl'
+			},
 		emotionalDescription: 'Leichtigkeit und Bewegung, die den Betrachter einlädt, zu verweilen.'
 	},
 	{
@@ -60,11 +57,10 @@ const artworks = [
 			'/art/Gallery/4 bitte laecheln detail.webp',
 			'/art/Gallery/4 bitte laecheln raum.webp'
 		],
-		details: {
-			dimensions: '90 x 70 cm',
-			technique: 'Acryl auf Leinwand',
-			year: '2019'
-		},
+			details: {
+				dimensions: '90 x 70 cm',
+				technique: 'Acryl auf Leinwand'
+			},
 		emotionalDescription: 'Ironisch-fröhlich: ein Spiel mit Erwartung und Ausdruck.'
 	},
 	{
@@ -75,11 +71,10 @@ const artworks = [
 			'/art/Gallery/5 hopefully detail.webp',
 			'/art/Gallery/5 hopefully raum.webp'
 		],
-		details: {
-			dimensions: '75 x 55 cm',
-			technique: 'Acryl',
-			year: '2023'
-		},
+			details: {
+				dimensions: '75 x 55 cm',
+				technique: 'Acryl'
+			},
 		emotionalDescription: 'Ein hoffnungsvoller Blick in helle Farbräume.'
 	},
 	{
@@ -90,11 +85,10 @@ const artworks = [
 			'/art/Gallery/6 sonate en la detail.webp',
 			'/art/Gallery/6 sonate en la raum.webp'
 		],
-		details: {
-			dimensions: '100 x 80 cm',
-			technique: 'Acryl & Collage',
-			year: '2018'
-		},
+			details: {
+				dimensions: '100 x 80 cm',
+				technique: 'Acryl & Collage'
+			},
 		emotionalDescription: 'Musikalische Strukturen, übersetzt in Farben und Schichten.'
 	},
 	{
@@ -105,11 +99,10 @@ const artworks = [
 			'/art/Gallery/7 der kuh detail.webp',
 			'/art/Gallery/7 der kuh raum.webp'
 		],
-		details: {
-			dimensions: '60 x 60 cm',
-			technique: 'Acryl',
-			year: '2017'
-		},
+			details: {
+				dimensions: '60 x 60 cm',
+				technique: 'Acryl'
+			},
 		emotionalDescription: 'Witzig und direkt — ein Augenzwinkern in Farbe.'
 	},
 	{
@@ -120,11 +113,10 @@ const artworks = [
 			'/art/Gallery/8 offline detail.webp',
 			'/art/Gallery/8 offline raum.webp'
 		],
-		details: {
-			dimensions: '85 x 65 cm',
-			technique: 'Acryl',
-			year: '2020'
-		},
+			details: {
+				dimensions: '85 x 65 cm',
+				technique: 'Acryl'
+			},
 		emotionalDescription: 'Ruhig, reduziert — ein Gegenpol zur digitalen Überflutung.'
 	},
 	{
@@ -135,11 +127,10 @@ const artworks = [
 			'/art/Gallery/9 spaziergang ins ich detail.webp',
 			'/art/Gallery/9 spaziergang ins ich raum.webp'
 		],
-		details: {
-			dimensions: '95 x 75 cm',
-			technique: 'Acryl auf Leinwand',
-			year: '2021'
-		},
+			details: {
+				dimensions: '95 x 75 cm',
+				technique: 'Acryl auf Leinwand'
+			},
 		emotionalDescription: 'Eine introspektive Reise in Farbräumen.'
 	}
 ];

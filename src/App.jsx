@@ -43,11 +43,11 @@ function App() {
         <link rel="icon" type="image/png" href="favicon.png" />
   </Helmet>
 
-  <div className="min-h-screen bg-white font-stolzl">
+  <div className="min-h-screen bg-white font-stolzl flex flex-col">
         <ScrollToTop />
         <Header />
 
-        <main>
+    <main className="flex-grow">
           <Routes>
             {/* Home-Route mit allen Sections */}
             <Route

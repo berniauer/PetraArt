@@ -10,18 +10,26 @@ const ImpressumPage = () => {
 			<h1 className="text-4xl font-light mb-6">Impressum</h1>
 
 			<div className="prose max-w-none text-gray-700">
-				<p>Petra Fimberger</p>
-				<p>Beispielstraße 1</p>
-				<p>12345 Musterstadt</p>
-
-				<h2>Kontakt</h2>
-				<p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
-
-				<h2>Haftungsausschluss</h2>
-				<p>
-					Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Aktualität,
-					Vollständigkeit und Richtigkeit der Inhalte kann jedoch keine Gewähr übernommen werden.
-				</p>
+				<div className="space-y-4">
+					<p className="text-lg font-medium">Petra Fimberger</p>
+					<p className="text-sm text-gray-600">Künstlerin — Malerei, Skizzen, Mixed Media, Skulpturen und Kunstobjekte</p>
+					<address className="not-italic">
+						<p>Steinbreite 6</p>
+						<p>5112 Lamprechtshausen</p>
+						<p>AUSTRIA</p>
+					</address>
+					<div>
+						<p className="font-medium">Kontakt</p>
+						<p>Tel.: <a href="tel:+436645365772" className="text-gold hover:underline">+43 664 5365772</a></p>
+						<p>E-Mail: <a href="mailto:info@petra-art.at" className="text-gold hover:underline">info@petra-art.at</a></p>
+					</div>
+					<hr />
+					<h2>Haftungsausschluss</h2>
+					<p>
+						Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Aktualität,
+						Vollständigkeit und Richtigkeit der Inhalte kann jedoch keine Gewähr übernommen werden.
+					</p>
+				</div>
 			</div>
 		</section>
 	);

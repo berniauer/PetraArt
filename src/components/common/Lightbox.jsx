@@ -145,12 +145,12 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white w-full rounded-2xl flex flex-col lg:flex-row overflow-hidden"
+            className="bg-white w-full rounded-2xl flex flex-row overflow-hidden"
             style={{ width: '70vw', height: '70vh', maxWidth: '1100px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="relative lg:w-2/3 w-full h-full bg-gray-100 flex items-center justify-center"
+              className="relative w-3/5 h-full bg-gray-100 flex items-center justify-center"
               onTouchStart={handleImageTouchStart}
               onTouchEnd={handleImageTouchEnd}
             >
@@ -203,7 +203,7 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             </div>
 
             <div
-              className="lg:w-1/3 w-full h-full flex flex-col p-8 overflow-y-auto"
+              className="w-2/5 h-full flex flex-col p-8 overflow-y-auto"
               onTouchStart={handleTextTouchStart}
               onTouchEnd={handleTextTouchEnd}
             >
@@ -212,7 +212,7 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
                 <div className="space-y-4 text-gray-600 mb-6">
                     <div>
                         <p className="font-medium text-gray-800">Details</p>
-                        <p>{artwork.details.dimensions} • {artwork.details.technique} • {artwork.details.year}</p>
+                        <p>{artwork.details.dimensions} • {artwork.details.technique}</p>
                     </div>
                     <div>
                         <p className="font-medium text-gray-800">Beschreibung</p>
@@ -223,7 +223,7 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
 
               <div className="flex-shrink-0">
                 <Button
-                  className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full bg-gold hover:bg-gold text-white py-3 md:py-4 text-base md:text-lg leading-tight rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={onInquiry}
                 >
                   Kunstwerk anfragen
