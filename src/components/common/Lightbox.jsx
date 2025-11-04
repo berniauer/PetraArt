@@ -36,6 +36,27 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [artwork, currentIndex, onNextArtwork, onPrevArtwork]);
+  
+  // Touch / gesture handling for mobile (refs and mount guard must be declared
+  // before any early return so the hooks order doesn't change between renders)
+  const imgTouchStartX = useRef(null);
+  const imgTouchStartY = useRef(null);
+  const textTouchStartX = useRef(null);
+  const textTouchStartY = useRef(null);
+  const TOUCH_THRESHOLD = 50; // px
+
+  // Prevent the same tap that opened the lightbox from immediately closing it
+  const mountedAt = useRef(null);
+  useEffect(() => {
+    if (artwork) {
+      mountedAt.current = Date.now();
+      // helpful debug log when testing on device
+      // eslint-disable-next-line no-console
+      console.log('Lightbox mounted at', mountedAt.current, 'for artwork', artwork?.id);
+    } else {
+      mountedAt.current = null;
+    }
+  }, [artwork]);
 
   if (!artwork) return null;
 
@@ -46,13 +67,6 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
   const prevImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + artwork.images.length) % artwork.images.length);
   };
-
-  // Touch / gesture handling for mobile
-  const imgTouchStartX = useRef(null);
-  const imgTouchStartY = useRef(null);
-  const textTouchStartX = useRef(null);
-  const textTouchStartY = useRef(null);
-  const TOUCH_THRESHOLD = 50; // px
 
   const handleImageTouchStart = (e) => {
     const t = e.touches[0];
