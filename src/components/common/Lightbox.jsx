@@ -106,6 +106,29 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
     }
   };
 
+  // Prevent the same tap that opened the lightbox from immediately closing it
+  const mountedAt = useRef(null);
+  useEffect(() => {
+    if (artwork) {
+      mountedAt.current = Date.now();
+      // helpful debug log when testing on device
+      // eslint-disable-next-line no-console
+      console.log('Lightbox mounted at', mountedAt.current, 'for artwork', artwork?.id);
+    } else {
+      mountedAt.current = null;
+    }
+  }, [artwork]);
+
+  const handleOverlayClick = (e) => {
+    // ignore clicks that happen within 300ms of mount (likely the same tap that opened it)
+    if (mountedAt.current && Date.now() - mountedAt.current < 300) {
+      // eslint-disable-next-line no-console
+      console.log('Ignored overlay click immediately after mount');
+      return;
+    }
+    onClose && onClose();
+  };
+
   return (
     <AnimatePresence>
       {artwork && (
