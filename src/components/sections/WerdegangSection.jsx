@@ -2,36 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const timeline = [
-  {
-    year: '2008',
-    title: 'Studienbeginn an der Akademie',
-    description: 'Aufnahme des Studiums der Bildenden Künste an der Akademie der Bildenden Künste München'
-  },
-  {
-    year: '2012',
-    title: 'Abschluss mit Diplom',
-    description: 'Abschluss des Studiums mit Auszeichnung und erste Einzelausstellung in der Galerie ArtPoint München'
-  },
-  {
-    year: '2015',
-    title: 'Kulturförderungs-Stipendium',
-    description: 'Stipendium der Kulturstiftung der Länder und Teilnahme an Gruppenausstellungen im In- und Ausland'
-  },
-  {
-    year: '2018',
-    title: 'Eröffnung eigenes Atelier',
-    description: 'Gründung des eigenen Ateliers in Wien und Beginn freier Atelier-Projekte'
-  },
-  {
-    year: '2021',
-    title: 'Nachwuchspreis für zeitgenössische Kunst',
-    description: 'Verleihung des renommierten Österreichischen Kunstnachwuchspreises'
-  },
-  {
-    year: '2024',
-    title: 'Internationale Ausstellung & Monografie',
-    description: 'Einzelausstellung in der Galerie Modern Arts NY und Veröffentlichung der ersten Monografie'
-  },
+  { year: '1973', title: 'Geboren', description: 'Geboren in Oberösterreich, Austria' },
+  { year: '2000', title: 'Annäherung an die Malerei', description: 'Beginn intensiver Auseinandersetzung mit Malerei' },
+  { year: '2001', title: 'Malseminar bei Birgit Lorenz', description: 'Teilnahme am Malseminar bei Birgit Lorenz in Burghausen' },
+  { year: '2002', title: 'Zeichen- und Malseminare', description: 'Zeichen- und Malseminare bei Mag. Art. Christiane Pott‑Schlager' },
+  { year: '2004 - 2006', title: 'Kunststudium', description: 'Kunststudium an der Leonardo Kunstakademie; Abschluss des Studiums bei Prof. Hannes Baier' },
+  { year: '2005 - 2007', title: 'Gemeinschaftsatelier', description: 'Mitglied im Gemeinschaftsatelier „Teilzeit"' },
+  { year: 'seit 2007', title: 'Malwochen & Workshops', description: 'Teilnahme an Malwochen bei Norbert Mayer („Nomay") und Themen‑Workshops bei Birgit Lorenz' },
+  { year: '2010', title: 'Kunstwoche bei Markus Lüpertz', description: 'Kunstwoche bei Prof. Markus Lüpertz, Dozent: Reinhold Braun' },
+  { year: '2011 - 2013', title: 'Tennessee, USA', description: 'Aufenthalt in Tennessee (USA)' },
+  { year: '2014', title: 'Kompaktwoche', description: 'Kompaktwoche bei Prof. Ulrich Klieber' },
+  { year: '2021 - 2024', title: 'Umbau Atelier', description: 'Umbau des eigenen Ateliers' },
+  { year: '2024', title: 'Akt LAB', description: 'Akt LAB: experimentelle Aktzeichnung bei Stefan Bachmann' }
 ];
 
 const WerdegangSection = () => {

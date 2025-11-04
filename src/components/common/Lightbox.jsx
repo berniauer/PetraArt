@@ -145,12 +145,12 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white w-full rounded-2xl flex flex-row overflow-hidden"
+            className="bg-white w-full rounded-2xl flex flex-col md:flex-row overflow-hidden"
             style={{ width: '70vw', height: '70vh', maxWidth: '1100px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="relative w-3/5 h-full bg-gray-100 flex items-center justify-center"
+              className="relative md:w-3/5 w-full md:h-full h-[65%] bg-gray-100 flex items-center justify-center"
               onTouchStart={handleImageTouchStart}
               onTouchEnd={handleImageTouchEnd}
             >
@@ -203,7 +203,7 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
             </div>
 
             <div
-              className="w-2/5 h-full flex flex-col p-8 overflow-y-auto"
+              className="md:w-2/5 w-full md:h-full h-[35%] flex flex-col p-6 md:p-8 overflow-y-auto"
               onTouchStart={handleTextTouchStart}
               onTouchEnd={handleTextTouchEnd}
             >
