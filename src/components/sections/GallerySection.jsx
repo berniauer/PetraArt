@@ -83,13 +83,22 @@ const GallerySection = () => {
   };
   
   const handleInquiry = () => {
+    try {
+      const art = selectedArtwork;
+      const msg = art ? `Information zum Kunstwerk:\n"${art.title}"\n\nIch interessiere mich für weitere Informationen.` : 'Ich interessiere mich für weitere Informationen.';
+      try { localStorage.setItem('prefillMessage', msg); } catch (e) { /* ignore */ }
+      try { window.dispatchEvent(new CustomEvent('exhibition:prefill', { detail: { message: msg } })); } catch (e) { /* ignore */ }
+    } catch (e) {
+      // ignore
+    }
+
     handleCloseLightbox();
     setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
             contactSection.scrollIntoView({ behavior: 'smooth' });
         }
-    }, 100);
+    }, 120);
   }
 
   return (

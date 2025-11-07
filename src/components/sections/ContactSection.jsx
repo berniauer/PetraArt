@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
@@ -10,6 +10,37 @@ const ContactSection = () => {
     email: '',
     message: ''
   });
+
+  useEffect(() => {
+    try {
+      const prefill = localStorage.getItem('prefillMessage');
+      if (prefill) {
+        setFormData((f) => ({ ...f, message: prefill }));
+        localStorage.removeItem('prefillMessage');
+        // Do NOT navigate to contact anchor automatically; user requested no auto-switch.
+      }
+    } catch (e) {
+      // ignore storage errors
+    }
+  }, []);
+
+  // Listen for programmatic prefill events so the ContactSection reacts immediately
+  useEffect(() => {
+    const handler = (e) => {
+      try {
+        const msg = e?.detail?.message || localStorage.getItem('prefillMessage');
+        if (msg) {
+          setFormData((f) => ({ ...f, message: msg }));
+          try { localStorage.removeItem('prefillMessage'); } catch (err) { /* ignore */ }
+        }
+      } catch (err) {
+        // ignore
+      }
+    };
+
+    window.addEventListener('exhibition:prefill', handler);
+    return () => window.removeEventListener('exhibition:prefill', handler);
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -86,6 +117,8 @@ const ContactSection = () => {
                   placeholder="E-Mail"
                 />
               </div>
+              
+              {/* Subject removed — prefills are inserted into the message field instead */}
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 sr-only">

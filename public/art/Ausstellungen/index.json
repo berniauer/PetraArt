@@ -1,0 +1,83 @@
+[
+  {
+    "folder": "2012-AVA",
+    "title": "AVA",
+    "location": "Chattanooga, USA",
+    "images": [
+      "art/Ausstellungen/2012-AVA/IMG_0001_2.webp",
+      "art/Ausstellungen/2012-AVA/IMG_0003_2.webp",
+      "art/Ausstellungen/2012-AVA/IMG_0007_2.webp",
+      "art/Ausstellungen/2012-AVA/IMG_0009_2.webp"
+    ]
+  },
+  {
+    "folder": "2015-Burghausen",
+    "title": "Spuren des Lebens",
+    "location": "Rathausgalerie Burghausen, Deutschland",
+    "images": [
+      "art/Ausstellungen/2015-Burghausen/IMG_3427.webp",
+      "art/Ausstellungen/2015-Burghausen/IMG_3428.webp",
+      "art/Ausstellungen/2015-Burghausen/IMG_3430.jpg",
+      "art/Ausstellungen/2015-Burghausen/IMG_3430.webp",
+      "art/Ausstellungen/2015-Burghausen/IMG_3435.webp",
+      "art/Ausstellungen/2015-Burghausen/IMG_3453.webp",
+      "art/Ausstellungen/2015-Burghausen/IMG_3493.webp"
+    ]
+  },
+  {
+    "folder": "2016-2023-Schaufenster",
+    "title": "Schaufenster",
+    "location": "Laufen, Deutschland",
+    "images": [
+      "art/Ausstellungen/2016-2023-Schaufenster/IMG_0856.webp",
+      "art/Ausstellungen/2016-2023-Schaufenster/IMG_4267.webp",
+      "art/Ausstellungen/2016-2023-Schaufenster/IMG_5608.webp",
+      "art/Ausstellungen/2016-2023-Schaufenster/IMG_8314.webp",
+      "art/Ausstellungen/2016-2023-Schaufenster/IMG_8477.webp"
+    ]
+  },
+  {
+    "folder": "2016-Artlet",
+    "title": "Artlet",
+    "location": "Salzburg, Österreich",
+    "images": [
+      "art/Ausstellungen/2016-Artlet/IMG_5547.webp",
+      "art/Ausstellungen/2016-Artlet/IMG_5635.webp",
+      "art/Ausstellungen/2016-Artlet/IMG_5642.webp"
+    ]
+  },
+  {
+    "folder": "2017-Heimatwerk-Salzburg",
+    "title": "Heimatwerk Ausstellung",
+    "location": "Salzburg, Österreich",
+    "images": [
+      "art/Ausstellungen/2017-Heimatwerk-Salzburg/IMG_4101.webp",
+      "art/Ausstellungen/2017-Heimatwerk-Salzburg/IMG_5494.webp",
+      "art/Ausstellungen/2017-Heimatwerk-Salzburg/IMG_5497.webp"
+    ]
+  },
+  {
+    "folder": "2017-Lamprechtshause-Mal-Anders",
+    "title": "Lamprechtshausen MAL anders",
+    "location": "Gemeindeamt Lamprechtshausen, Österreich",
+    "images": [
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_3694.webp",
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_3704.webp",
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_3759.webp",
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_3783.webp",
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_5503.webp",
+      "art/Ausstellungen/2017-Lamprechtshause-Mal-Anders/IMG_8290.webp"
+    ]
+  },
+  {
+    "folder": "2018-Laufen",
+    "title": "Kapuzinerhof Ausstellung",
+    "location": "Laufen, Deutschland",
+    "images": [
+      "art/Ausstellungen/2018-Laufen/IMG_0427.webp",
+      "art/Ausstellungen/2018-Laufen/IMG_0428.webp",
+      "art/Ausstellungen/2018-Laufen/IMG_0435.webp",
+      "art/Ausstellungen/2018-Laufen/IMG_0443.webp"
+    ]
+  }
+]
