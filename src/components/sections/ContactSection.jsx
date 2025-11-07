@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
+// Use VITE_API_URL at build time to point to production API (falls back to dev proxy '/send-form')
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -61,7 +64,9 @@ const ContactSection = () => {
           message: formData.message,
         };
 
-        const res = await fetch('/send-form', {
+        const endpoint = API_BASE ? `${API_BASE.replace(/\/$/, '')}/send-form` : '/send-form';
+
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
