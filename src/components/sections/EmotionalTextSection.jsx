@@ -21,7 +21,7 @@ const EmotionalTextSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8">
             wenn Stil allein
-            <span className="text-gold block">nicht genug ist.</span>
+            <span className="text-gold block">nicht genug ist</span>
           </h2>
 
           {/* Golden, centered toggle for desktop — knob-only, labels removed */}

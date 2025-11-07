@@ -26,7 +26,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               gib deinem zuhause
-              <span className="block text-gold font-normal">eine seele.</span>
+              <span className="block text-gold font-normal">eine seele</span>
             </motion.h1>
             
             <motion.p 

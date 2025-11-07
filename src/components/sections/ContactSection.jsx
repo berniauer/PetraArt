@@ -115,7 +115,7 @@ const ContactSection = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-              ich freue mich über eine <span className="text-gold">Nachricht.</span>
+              ich freue mich über eine <span className="text-gold">Nachricht</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               I am happy to hear from you.

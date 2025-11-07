@@ -51,7 +51,7 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibit
           onClick={onClose}
         >
           <motion.div
-            className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+            className="bg-white rounded-2xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -95,14 +95,16 @@ const ExhibitionLightbox = ({ exhibition, isOpen, onClose, onInquiry, allExhibit
               </div>
             </div>
 
-            <div className="flex-grow bg-gray-100 p-6 flex flex-col items-center justify-center">
+            <div className="flex-1 min-h-0 overflow-auto bg-gray-100 p-6 flex flex-col items-center">
               {images.length > 0 ? (
-                <div className="relative w-full h-full max-h-[60vh] flex items-center justify-center">
+                <div className="relative w-full flex items-center justify-center">
                   <button className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2" onClick={prev}>
                     <ChevronLeft className="w-6 h-6" />
                   </button>
 
-                  <img src={srcFor(images[currentIndex])} alt={exhibition.title} className="max-h-[60vh] object-contain rounded" />
+                  <div className="w-full flex items-center justify-center">
+                    <img src={srcFor(images[currentIndex])} alt={exhibition.title} className="max-h-[60vh] max-w-full object-contain rounded" />
+                  </div>
 
                   <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2" onClick={next}>
                     <ChevronRight className="w-6 h-6" />
