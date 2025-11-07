@@ -210,14 +210,10 @@ const Lightbox = ({ artwork, onClose, onInquiry, allArtworks, onPrevArtwork, onN
               <div className="flex-grow">
                 <h2 className="text-3xl font-light text-gray-900 mb-6">{artwork.title}</h2>
                 <div className="space-y-4 text-gray-600 mb-6">
-                    <div>
-                        <p className="font-medium text-gray-800">Details</p>
-                        <p>{artwork.details.dimensions} • {artwork.details.technique}</p>
-                    </div>
-                    <div>
-                        <p className="font-medium text-gray-800">Beschreibung</p>
-                        <p>{artwork.emotionalDescription}</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Details</p>
+                    <p>{artwork.details.dimensions} • {artwork.details.technique}</p>
+                  </div>
                 </div>
               </div>
 

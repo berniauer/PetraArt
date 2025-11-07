@@ -56,7 +56,7 @@ const ArtistSection = () => {
             <div className="mt-8">
               <Link to="/references">
                 <Button className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                  Meinen Werdegang
+                  über mich
                 </Button>
               </Link>
           </div>

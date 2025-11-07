@@ -114,7 +114,7 @@ const GallerySection = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-              Kunst mit <span className="text-gold">Persönlichkeit.</span>
+              <span className="text-gold">kunst</span> verbindet
             </h2>
           </motion.div>
 

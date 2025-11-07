@@ -13,10 +13,10 @@ const Header = () => {
 
   // Links: drei Anchors und eine Route
   const navLinks = [
-    { name: 'galerie', href: '#gallery' },
-    { name: 'über mich', href: '#about' },
-    { name: 'kontakt', href: '#contact' },
-    { name: 'referenzen', href: '/references' },
+    { name: 'gallery', href: '#gallery' },
+    { name: 'about', href: '#about' },
+    { name: 'contact', href: '#contact' },
+    { name: 'showing', href: '/references' },
   ];
 
   // Header-Hintergrund bei Scroll

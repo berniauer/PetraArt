@@ -29,7 +29,7 @@ const WerdegangSection = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-              Mein <span className="text-gold">Werdegang.</span>
+              mein <span className="text-gold">Werdegang</span>
             </h2>
           </motion.div>
 

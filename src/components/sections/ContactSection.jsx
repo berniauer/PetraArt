@@ -51,11 +51,55 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast({
-      title: "Nachricht gesendet! 🎨",
-      description: "Vielen Dank für Ihr Interesse. Petra wird sich bald bei Ihnen melden.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+
+    // Send the form to the backend. In dev the vite proxy will forward /send-form
+    (async () => {
+      try {
+        const payload = {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        };
+
+        const res = await fetch('/send-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        // attempt to read response body for debug
+        let bodyText = '';
+        try {
+          const ct = res.headers.get('content-type') || '';
+          if (ct.includes('application/json')) bodyText = JSON.stringify(await res.json());
+          else bodyText = await res.text();
+        } catch (err) {
+          // ignore parse errors
+        }
+
+        if (!res.ok) {
+          console.error('send-form failed', res.status, bodyText);
+          toast({
+            title: 'Fehler beim Senden',
+            description: bodyText || 'Beim Senden der Nachricht ist ein Fehler aufgetreten.',
+          });
+          return;
+        }
+
+        toast({
+          title: 'Nachricht gesendet! 🎨',
+          description: 'Vielen Dank für dein Interesse. Ich werde mich bald bei dir melden.',
+        });
+
+        setFormData({ name: '', email: '', message: '' });
+      } catch (err) {
+        console.error('send-form error', err);
+        toast({
+          title: 'Fehler',
+          description: 'Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es später erneut.',
+        });
+      }
+    })();
   };
 
   return (
@@ -71,10 +115,10 @@ const ContactSection = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-              Beginnen wir ein <span className="text-gold">Gespräch.</span>
+              ich freue mich über eine <span className="text-gold">Nachricht.</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ob Sie sich für ein bestimmtes Werk interessieren, eine Frage haben oder über die Möglichkeit eines Auftrags sprechen möchten – ich freue mich, von Ihnen zu hören. Finden Sie das Kunstwerk, das nicht nur Ihr Zuhause, sondern auch Ihren Alltag bereichert.
+              I am happy to hear from you.
             </p>
         </motion.div>
 

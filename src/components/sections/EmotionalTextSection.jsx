@@ -20,7 +20,7 @@ const EmotionalTextSection = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8">
-            Wenn Stil allein
+            wenn Stil allein
             <span className="text-gold block">nicht genug ist.</span>
           </h2>
 

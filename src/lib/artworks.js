@@ -9,7 +9,7 @@
 const artworks = [
 	{
 		id: '1',
-		title: 'Einigschaut',
+		title: 'einigschaut',
 		images: [
 			'/art/Gallery/1 einigschaut.webp',
 			'/art/Gallery/1 einigschaut detail.webp',
@@ -17,13 +17,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '80 x 60 cm',
-				technique: 'Acryl auf Leinwand'
-			},
-		emotionalDescription: 'Ein nachdenkliches, ruhiges Stück mit subtilen Farbschichten.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '2',
-		title: 'Fabelhaft',
+		title: 'fabelhaft',
 		images: [
 			'/art/Gallery/2 fabelhaft.webp',
 			'/art/Gallery/2 fabelhaft detail.webp',
@@ -31,13 +30,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '70 x 50 cm',
-				technique: 'Mixed Media'
-			},
-		emotionalDescription: 'Verspielt und erzählerisch: Formen und Texturen führen in eine kleine Fantasiewelt.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '3',
-		title: 'Locker',
+		title: 'locker',
 		images: [
 			'/art/Gallery/3 locker.webp',
 			'/art/Gallery/3 locker detail.webp',
@@ -45,13 +43,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '60 x 80 cm',
-				technique: 'Acryl'
-			},
-		emotionalDescription: 'Leichtigkeit und Bewegung, die den Betrachter einlädt, zu verweilen.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '4',
-		title: 'Bitte lächeln',
+		title: 'bitte lächeln',
 		images: [
 			'/art/Gallery/4 bitte laecheln.webp',
 			'/art/Gallery/4 bitte laecheln detail.webp',
@@ -59,13 +56,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '90 x 70 cm',
-				technique: 'Acryl auf Leinwand'
-			},
-		emotionalDescription: 'Ironisch-fröhlich: ein Spiel mit Erwartung und Ausdruck.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '5',
-		title: 'Hopefully',
+		title: 'hopefully',
 		images: [
 			'/art/Gallery/5 hopefully.webp',
 			'/art/Gallery/5 hopefully detail.webp',
@@ -73,13 +69,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '75 x 55 cm',
-				technique: 'Acryl'
-			},
-		emotionalDescription: 'Ein hoffnungsvoller Blick in helle Farbräume.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '6',
-		title: 'Sonate en la',
+		title: 'sonate en la',
 		images: [
 			'/art/Gallery/6 sonate en la.webp',
 			'/art/Gallery/6 sonate en la detail.webp',
@@ -87,13 +82,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '100 x 80 cm',
-				technique: 'Acryl & Collage'
-			},
-		emotionalDescription: 'Musikalische Strukturen, übersetzt in Farben und Schichten.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '7',
-		title: 'Der Kuh',
+		title: 'der kuh',
 		images: [
 			'/art/Gallery/7 der kuh.webp',
 			'/art/Gallery/7 der kuh detail.webp',
@@ -101,13 +95,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '60 x 60 cm',
-				technique: 'Acryl'
-			},
-		emotionalDescription: 'Witzig und direkt — ein Augenzwinkern in Farbe.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '8',
-		title: 'Offline',
+		title: 'offline',
 		images: [
 			'/art/Gallery/8 offline.webp',
 			'/art/Gallery/8 offline detail.webp',
@@ -115,13 +108,12 @@ const artworks = [
 		],
 			details: {
 				dimensions: '85 x 65 cm',
-				technique: 'Acryl'
-			},
-		emotionalDescription: 'Ruhig, reduziert — ein Gegenpol zur digitalen Überflutung.'
+				technique: 'mixed media'
+			}
 	},
 	{
 		id: '9',
-		title: 'Spaziergang ins Ich',
+		title: 'spaziergang ins ich',
 		images: [
 			'/art/Gallery/9 spaziergang ins ich.webp',
 			'/art/Gallery/9 spaziergang ins ich detail.webp',
@@ -129,9 +121,8 @@ const artworks = [
 		],
 			details: {
 				dimensions: '95 x 75 cm',
-				technique: 'Acryl auf Leinwand'
-			},
-		emotionalDescription: 'Eine introspektive Reise in Farbräumen.'
+				technique: 'mixed media'
+			}
 	}
 ];
 
