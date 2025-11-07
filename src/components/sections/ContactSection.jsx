@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-
-// Use VITE_API_URL at build time to point to production API (falls back to dev proxy '/send-form')
-const API_BASE = import.meta.env.VITE_API_URL || '';
+import { sendForm } from '@/lib/api';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -55,7 +53,7 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Send the form to the backend. In dev the vite proxy will forward /send-form
+    // Send the form via the shared API helper. In dev the Vite proxy will forward '/send-form'.
     (async () => {
       try {
         const payload = {
@@ -64,32 +62,7 @@ const ContactSection = () => {
           message: formData.message,
         };
 
-        const endpoint = API_BASE ? `${API_BASE.replace(/\/$/, '')}/send-form` : '/send-form';
-
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-
-        // attempt to read response body for debug
-        let bodyText = '';
-        try {
-          const ct = res.headers.get('content-type') || '';
-          if (ct.includes('application/json')) bodyText = JSON.stringify(await res.json());
-          else bodyText = await res.text();
-        } catch (err) {
-          // ignore parse errors
-        }
-
-        if (!res.ok) {
-          console.error('send-form failed', res.status, bodyText);
-          toast({
-            title: 'Fehler beim Senden',
-            description: bodyText || 'Beim Senden der Nachricht ist ein Fehler aufgetreten.',
-          });
-          return;
-        }
+        const result = await sendForm(payload);
 
         toast({
           title: 'Nachricht gesendet! 🎨',
@@ -99,9 +72,10 @@ const ContactSection = () => {
         setFormData({ name: '', email: '', message: '' });
       } catch (err) {
         console.error('send-form error', err);
+        const msg = err?.message || 'Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
         toast({
-          title: 'Fehler',
-          description: 'Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es später erneut.',
+          title: 'Fehler beim Senden',
+          description: msg,
         });
       }
     })();
