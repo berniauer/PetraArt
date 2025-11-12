@@ -1,12 +1,11 @@
-// Central API helper used by the frontend to call backend endpoints.
-// In dev the Vite proxy handles requests to '/send-form' so VITE_API_URL
-// should be empty during local dev. In production set VITE_API_URL to the
-// full origin (e.g. https://api.petra-art.at) so requests go to the API.
-export const API = import.meta.env.VITE_API_URL || '';
+// src/lib/api.js
+// Dev: VITE_API_URL leer lassen -> Vite-Proxy leitet /send-form an localhost:3000
+// Prod: VITE_API_URL = https://api.petra-art.at -> direkte Cross-Origin-Anfrage (CORS im Backend erlauben)
+
+export const API = (import.meta.env?.VITE_API_URL || '').replace(/\/$/, '');
 
 export const sendForm = async (payload) => {
-  const base = API.replace(/\/$/, '');
-  const url = base ? `${base}/send-form` : '/send-form';
+  const url = API ? `${API}/send-form` : '/send-form';
 
   const res = await fetch(url, {
     method: 'POST',
@@ -14,18 +13,13 @@ export const sendForm = async (payload) => {
     body: JSON.stringify(payload),
   });
 
-  // Try to parse a body for richer errors or success payloads
   let body = '';
   try {
     const ct = res.headers.get('content-type') || '';
-    if (ct.includes('application/json')) body = await res.json();
-    else body = await res.text();
-  } catch (err) {
-    // ignore parse errors
-  }
+    body = ct.includes('application/json') ? await res.json() : await res.text();
+  } catch (_) {}
 
   if (!res.ok) {
-    // Prefer structured error messages when available
     const errMsg = (body && typeof body === 'object' && body.error) ? body.error : (body || `Status ${res.status}`);
     const e = new Error(errMsg);
     e.responseBody = body;
@@ -33,6 +27,5 @@ export const sendForm = async (payload) => {
     throw e;
   }
 
-  // Return parsed JSON when possible, otherwise raw body
   return body;
 };
