@@ -6,11 +6,13 @@ import { sendForm } from '@/lib/api';
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const DEBUG_SHOW_RESPONSE = true; // always show debug info for now
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+  const [serverResult, setServerResult] = useState(null);
 
   useEffect(() => {
     try {
@@ -63,6 +65,7 @@ const ContactSection = () => {
         };
 
         const result = await sendForm(payload);
+        setServerResult({ ok: true, body: result, status: 200 });
 
         toast({
           title: 'Nachricht gesendet! 🎨',
@@ -72,6 +75,7 @@ const ContactSection = () => {
         setFormData({ name: '', email: '', message: '' });
       } catch (err) {
         console.error('send-form error', err);
+        setServerResult({ ok: false, message: err?.message, status: err?.status, responseBody: err?.responseBody });
         const msg = err?.message || 'Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
         toast({
           title: 'Fehler beim Senden',
@@ -166,6 +170,14 @@ const ContactSection = () => {
                 Anfrage senden
               </Button>
             </form>
+            {DEBUG_SHOW_RESPONSE && serverResult && (
+              <div className={`mt-4 p-3 rounded ${serverResult.ok ? 'border border-green-300 bg-green-50' : 'border border-red-300 bg-red-50'}`}>
+                <div className="text-sm font-medium">
+                  {serverResult.ok ? 'Server response' : 'Server error'} {serverResult.status ? `(HTTP ${serverResult.status})` : ''}
+                </div>
+                <pre className="text-xs mt-2 whitespace-pre-wrap">{serverResult.ok ? JSON.stringify(serverResult.body, null, 2) : (serverResult.message || JSON.stringify(serverResult.responseBody || ''))}</pre>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
