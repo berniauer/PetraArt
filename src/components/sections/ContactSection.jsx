@@ -6,7 +6,6 @@ import { sendForm } from '@/lib/api';
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const DEBUG_SHOW_RESPONSE = true; // always show debug info for now
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,6 +122,7 @@ const ContactSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
+                  autoComplete="name"
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
                   placeholder="Name"
@@ -139,6 +139,7 @@ const ContactSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  autoComplete="email"
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
                   placeholder="E-Mail"
@@ -156,6 +157,7 @@ const ContactSection = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
+                  autoComplete="off"
                   required
                   rows={6}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200 resize-none"
@@ -170,14 +172,7 @@ const ContactSection = () => {
                 Anfrage senden
               </Button>
             </form>
-            {DEBUG_SHOW_RESPONSE && serverResult && (
-              <div className={`mt-4 p-3 rounded ${serverResult.ok ? 'border border-green-300 bg-green-50' : 'border border-red-300 bg-red-50'}`}>
-                <div className="text-sm font-medium">
-                  {serverResult.ok ? 'Server response' : 'Server error'} {serverResult.status ? `(HTTP ${serverResult.status})` : ''}
-                </div>
-                <pre className="text-xs mt-2 whitespace-pre-wrap">{serverResult.ok ? JSON.stringify(serverResult.body, null, 2) : (serverResult.message || JSON.stringify(serverResult.responseBody || ''))}</pre>
-              </div>
-            )}
+            {/* Debug response box removed */}
           </motion.div>
         </div>
       </div>
