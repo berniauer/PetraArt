@@ -16,7 +16,7 @@ const artworks = [
 			'/art/Gallery/1 einigschaut raum.webp'
 		],
 			details: {
-				dimensions: '80 x 60 cm',
+				dimensions: '80 x 100 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -29,7 +29,7 @@ const artworks = [
 			'/art/Gallery/2 fabelhaft raum.webp'
 		],
 			details: {
-				dimensions: '70 x 50 cm',
+				dimensions: '100 x 150 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -42,7 +42,7 @@ const artworks = [
 			'/art/Gallery/3 locker raum.webp'
 		],
 			details: {
-				dimensions: '60 x 80 cm',
+				dimensions: '100 x 140 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -55,7 +55,7 @@ const artworks = [
 			'/art/Gallery/4 bitte laecheln raum.webp'
 		],
 			details: {
-				dimensions: '90 x 70 cm',
+				dimensions: '100 x 100 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -68,7 +68,7 @@ const artworks = [
 			'/art/Gallery/5 hopefully raum.webp'
 		],
 			details: {
-				dimensions: '75 x 55 cm',
+				dimensions: '100 x 110 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -81,7 +81,7 @@ const artworks = [
 			'/art/Gallery/6 sonate en la raum.webp'
 		],
 			details: {
-				dimensions: '100 x 80 cm',
+				dimensions: '90 x 100 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -94,7 +94,7 @@ const artworks = [
 			'/art/Gallery/7 der kuh raum.webp'
 		],
 			details: {
-				dimensions: '60 x 60 cm',
+				dimensions: '80 x 100 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -107,7 +107,7 @@ const artworks = [
 			'/art/Gallery/8 offline raum.webp'
 		],
 			details: {
-				dimensions: '85 x 65 cm',
+				dimensions: '70 x 80 cm',
 				technique: 'mixed media'
 			}
 	},
@@ -120,7 +120,7 @@ const artworks = [
 			'/art/Gallery/9 spaziergang ins ich raum.webp'
 		],
 			details: {
-				dimensions: '95 x 75 cm',
+				dimensions: '50 x 70 cm',
 				technique: 'mixed media'
 			}
 	}

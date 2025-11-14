@@ -93,11 +93,11 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo / Home */}
-          <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity">
+          <a href="/" onClick={scrollToTop} className="hover:opacity-80 transition-opacity h-full flex items-center">
             <img
               src={import.meta.env.BASE_URL + 'petra_transparent_stempel.png'}
               alt="Petra Fimberger"
-              className="h-12 w-auto md:h-14 lg:h-16"
+              className="h-full w-auto object-contain"
             />
           </a>
 
