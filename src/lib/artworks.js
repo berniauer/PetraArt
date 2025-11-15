@@ -7,6 +7,19 @@
 // - emotionalDescription: string shown in the Lightbox
 
 const artworks = [
+		{
+		id: '2',
+		title: 'fabelhaft',
+		images: [
+			'/art/Gallery/2 fabelhaft.webp',
+			'/art/Gallery/2 fabelhaft detail.webp',
+			'/art/Gallery/2 fabelhaft raum.webp'
+		],
+			details: {
+				dimensions: '100 x 150 cm',
+				technique: 'mixed media'
+			}
+	},
 	{
 		id: '1',
 		title: 'einigschaut',
@@ -20,19 +33,7 @@ const artworks = [
 				technique: 'mixed media'
 			}
 	},
-	{
-		id: '2',
-		title: 'fabelhaft',
-		images: [
-			'/art/Gallery/2 fabelhaft.webp',
-			'/art/Gallery/2 fabelhaft detail.webp',
-			'/art/Gallery/2 fabelhaft raum.webp'
-		],
-			details: {
-				dimensions: '100 x 150 cm',
-				technique: 'mixed media'
-			}
-	},
+
 	{
 		id: '3',
 		title: 'locker',

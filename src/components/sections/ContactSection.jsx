@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
@@ -44,12 +44,68 @@ const ContactSection = () => {
     return () => window.removeEventListener('exhibition:prefill', handler);
   }, []);
 
+  const formRef = useRef(null);
+  const imgRef = useRef(null);
+  const imgWrapperRef = useRef(null);
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
+
+  useEffect(() => {
+    const updateImageMaxHeight = () => {
+      if (!formRef.current || !imgRef.current || !imgWrapperRef.current) return;
+      const isMobile = window.innerWidth < 1024; // tailwind lg breakpoint
+      const ORIGINAL_W = 770;
+      const ORIGINAL_H = 926;
+      const RATIO = ORIGINAL_W / ORIGINAL_H; // width/height
+
+      if (isMobile) {
+        // remove forced sizing on mobile so image stacks naturally
+        imgWrapperRef.current.style.height = '';
+        imgWrapperRef.current.style.width = '';
+      } else {
+        const formH = formRef.current.offsetHeight;
+        if (!formH) return;
+
+        // desired width to keep original aspect ratio while matching form height
+        const desiredW = Math.round(formH * RATIO);
+
+        // container (column) available width
+        const column = imgWrapperRef.current.parentElement;
+        const availableW = column ? column.clientWidth : imgWrapperRef.current.clientWidth;
+
+        if (desiredW <= availableW) {
+          // we can use full form height and keep aspect ratio
+          imgWrapperRef.current.style.height = `${formH}px`;
+          imgWrapperRef.current.style.width = `${desiredW}px`;
+        } else {
+          // too wide for the column — scale down to available width, adjust height accordingly
+          const scale = availableW / desiredW;
+          const adjustedH = Math.max(1, Math.round(formH * scale));
+          imgWrapperRef.current.style.width = `${availableW}px`;
+          imgWrapperRef.current.style.height = `${adjustedH}px`;
+        }
+      }
+    };
+
+    updateImageMaxHeight();
+    window.addEventListener('resize', updateImageMaxHeight);
+
+    let ro;
+    if (typeof ResizeObserver !== 'undefined' && formRef.current) {
+      ro = new ResizeObserver(updateImageMaxHeight);
+      ro.observe(formRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateImageMaxHeight);
+      if (ro && formRef.current) ro.disconnect();
+    };
+  }, [formRef, imgRef, formData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,76 +160,100 @@ const ContactSection = () => {
             </p>
         </motion.div>
 
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="flex flex-col"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  autoComplete="name"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
-                  placeholder="Name"
-                />
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col" id="contact-form">
+              <div className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    autoComplete="name"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
+                    placeholder="Name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
+                    E-Mail
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    autoComplete="email"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
+                    placeholder="E-Mail"
+                  />
+                </div>
+
+                {/* Subject removed — prefills are inserted into the message field instead */}
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
+                    Ihre Nachricht
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    autoComplete="off"
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200 resize-none"
+                    placeholder="Ihre Nachricht"
+                  />
+                </div>
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
-                  E-Mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  autoComplete="email"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200"
-                  placeholder="E-Mail"
-                />
+
+              <div className="mt-6">
+                <Button
+                  type="submit"
+                  className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Anfrage senden
+                </Button>
               </div>
-              
-              {/* Subject removed — prefills are inserted into the message field instead */}
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 sr-only">
-                  Ihre Nachricht
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  autoComplete="off"
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Ihre Nachricht"
-                />
-              </div>
-              
-              <Button 
-                type="submit"
-                className="w-full bg-gold hover:bg-gold text-white py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Anfrage senden
-              </Button>
             </form>
-            {/* Debug response box removed */}
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center"
+          >
+            <div ref={imgWrapperRef} className="w-full flex items-center justify-center overflow-hidden rounded-2xl shadow-lg">
+              <img
+                ref={imgRef}
+                alt="Foto Petra"
+                src="foto-petra-2.webp"
+                id="contact-photo"
+                className="block h-full w-auto max-w-full object-contain"
+              />
+            </div>
+          </motion.div>
+          </div>
         </div>
       </div>
     </section>
