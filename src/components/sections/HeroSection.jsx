@@ -25,8 +25,9 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              du, <span className="block text-gold font-normal">die kunst</span><br />
-              ich und
+              du, <span className="text-gold font-normal whitespace-nowrap">die kunst</span>
+              <br />
+              und ich              
             </motion.h1>
             
             <motion.p 
