@@ -27,7 +27,7 @@ const HeroSection = () => {
             >
               du, <span className="text-gold font-normal whitespace-nowrap">die kunst</span>
               <br />
-              und ich              
+              & ich              
             </motion.h1>
             
             <motion.p 
